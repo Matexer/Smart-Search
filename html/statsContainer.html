@@ -1,3 +1,46 @@
-<div id="stats-container" class="conatiner d-flex">
+<div id="stats-container">
 
+    <div id="last-search-stats-container" class="container">
+        <span>Przy ostatnim wyszukiwaniu</span><br>
+
+        <span class="list-group-item text-truncate rounded">
+            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet
+        </span>
+
+        <span>Długość wzorca: </span>
+        <span>...</span><br>
+
+        <span>Długość tekstu: </span>
+        <span>...</span><br>
+
+        <span>Czas poszukiwań: </span>
+        <span>...</span><br>
+
+        <span>Liczba odnalezionych dopasowań: </span>
+        <span>...</span><br>
+
+        <br>
+
+        <span>Histogram dopasowań</span>
+        <canvas id="lastHistChart" width="300" height="150"></canvas>
+    </div>
+
+    <div id="all-search-stats-container" class="container">
+        <span>Dla wszystkich wyszukiwań: </span><br>
+        <br>
+
+        <span>Szukanych wzorców: </span>
+        <span>...</span><br>
+
+        <span>Odnalezionych dopasowań: </span>
+        <span>...</span><br>
+
+        <span>Przeanalizowanych znaków: </span>
+        <span>...</span><br>
+    </div>
+
+    <div style="width: 100%; background-color: darkorange; margin-top: 30px; padding: 5px;" class="text-center">
+        <button id="reset-stats-btn" type="button" class="btn btn-danger">Resetuj statystyki</button>
+    </div>
+    </div>
 </div>

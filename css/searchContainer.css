@@ -8,6 +8,7 @@
 
 #output-container {
     overflow-y: auto;
+    height: fit-content;
     max-height: 150px;
     padding: 0;
 }
@@ -28,11 +29,11 @@
 }
 
 #slider-container {
-    height: 20px;
     width: 90%;
 }
 
 #filter-slider {
+    height: 100%;
     width: 100%;
 }
 
