@@ -1,0 +1,15 @@
+@import url(basic.css);
+@import url(header.css);
+@import url(searchContainer.css);
+@import url(statsContainer.css);
+@import url(settingsContainer.css);
+
+body {
+    background-color: black;
+}
+
+#main {
+    padding: 0;
+    width: 400px;
+    background: whitesmoke;
+}

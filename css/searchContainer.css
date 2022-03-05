@@ -1,0 +1,39 @@
+#search-container {
+    display: none;
+}
+
+#control-container {
+    padding: 5px;
+}
+
+#output-container {
+    overflow-y: auto;
+    max-height: 150px;
+    padding: 0;
+}
+
+#filter-container {
+    display: inline-flex;
+    width: 100%;
+}
+
+#min-similarity, #max-difference {
+    margin: 0 auto;
+}
+
+#min-similarity {
+    width: 85%;
+}
+
+#max-difference {
+    width: 15%;
+    margin-right: 5px;
+}
+
+#output-card {
+    width: auto;
+}
+
+#search-btn {
+    margin-left: 1px;
+}

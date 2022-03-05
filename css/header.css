@@ -1,0 +1,31 @@
+.icon {
+    width: 20px;
+    height: 20px;
+    margin: 6px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+#header-container {
+    background-color: silver;
+    width: 100%;
+}
+
+#icons-container {
+    width: fit-content;
+    padding: 0;
+    margin-left: 5px;
+}
+
+#search-icon {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}

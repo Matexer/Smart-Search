@@ -1,0 +1,10 @@
+{
+  "name": "Smart Search",
+  "description": "The extension provides an optimized text searching based on a Wagner-Fisher algorithm.",
+  "version": "1.0",
+  "manifest_version": 3,
+
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
