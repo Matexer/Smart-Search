@@ -3,3 +3,22 @@
     max-height: 256px;
     overflow-y: auto;
 }
+
+#reset-settings-btn {
+    margin-right: 60px;
+}
+
+.setting {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.setting-label {
+    text-align: center;
+    margin-right: 10px;
+}
+
+.setting-value {
+    width: 3em;
+    height: 1.5em;
+}
