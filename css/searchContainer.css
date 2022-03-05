@@ -17,17 +17,23 @@
     width: 100%;
 }
 
-#min-similarity, #max-difference {
+#slider-container, #filter-value {
     margin: 0 auto;
 }
 
-#min-similarity {
-    width: 85%;
+#filter-value {
+    padding: 4px;
+    width: 10%;
+    margin-right: 5px;
 }
 
-#max-difference {
-    width: 15%;
-    margin-right: 5px;
+#slider-container {
+    height: 20px;
+    width: 90%;
+}
+
+#filter-slider {
+    width: 100%;
 }
 
 #output-card {

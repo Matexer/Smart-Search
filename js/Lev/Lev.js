@@ -1,4 +1,4 @@
-class Lev {
+export class Lev {
     static SizeT (a) {
         return 2^a
     };
