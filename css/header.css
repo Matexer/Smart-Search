@@ -6,6 +6,11 @@
 
 .icon:hover {
     cursor: pointer;
+    filter: invert(23%) sepia(30%) saturate(7086%) hue-rotate(83deg) brightness(89%) contrast(87%);
+}
+
+.icon-selected {
+    filter: invert(55%) sepia(99%) saturate(2481%) hue-rotate(140deg) brightness(95%) contrast(101%);
 }
 
 #header-container {
@@ -23,6 +28,12 @@
     margin-left: 0;
     padding-left: 0;
 }
+
+/* #stats-icon {
+}
+
+#settings-icon {
+} */
 
 #title {
     width: 100%;

@@ -26,17 +26,21 @@ export class Header extends Basic {
 
     static hideAll() {
         $("#content").children().hide();
+        $("#icons-container").children().removeClass("icon-selected");
     }
 
     static showSearchContainer() {
         $("#search-container").show();
+        $("#search-icon").addClass("icon-selected")
     }
 
     static showStatsContainer() {
         $("#stats-container").show();
+        $("#stats-icon").addClass("icon-selected")
     }
 
     static showSettingsContainer() {
         $("#settings-container").show();
+        $("#settings-icon").addClass("icon-selected")
     }
 }

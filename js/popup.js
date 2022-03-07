@@ -11,7 +11,7 @@ class Popup {
         this.statsWindow = new Stats($("#content"));
         this.settingsWindow = new Settings($("#content"));
 
-        Header.showSettingsContainer();
+        Header.showSearchContainer();
 
         $("#search-btn").click(function() {
             console.log(Search.getPattern());

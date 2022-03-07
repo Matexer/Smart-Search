@@ -1,9 +1,23 @@
+.search-output {
+    padding: 5px;
+}
+
+.search-output:hover {
+    background-color: yellowgreen;
+    cursor: pointer;
+}
+
+.output-badge {
+    color: black; 
+    background-color: orange;
+}
+
 #search-container {
     display: none;
 }
 
-#control-container {
-    padding: 5px;
+#pattern {
+    margin-right: 4px;
 }
 
 #output-container {
@@ -28,6 +42,11 @@
     margin-right: 5px;
 }
 
+#filter-percent-value {
+    color: darkorange;
+    font:bold;
+}
+
 #slider-container {
     width: 90%;
 }
@@ -37,8 +56,8 @@
     width: 100%;
 }
 
-#output-card {
-    width: auto;
+#filter-slider:hover {
+    cursor: pointer;
 }
 
 #search-btn {
