@@ -25,6 +25,7 @@
     height: fit-content;
     max-height: 150px;
     padding: 0;
+    display: none;
 }
 
 #filter-container {

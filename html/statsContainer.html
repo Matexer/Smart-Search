@@ -1,23 +1,26 @@
-<div id="stats-container" class="rounded">
+<div id="stats-container" class="rounded noselect">
 
-    <div id="last-search-stats-container" class="container">
-        <span>Przy ostatnim wyszukiwaniu</span><br>
+    <div id="last-search-stats-container" class="container border-bottom">
+        <span>Dla ostatniego wyszukiwania</span><br>
 
         <span class="list-group-item text-truncate search-output rounded">
             Neque porro quisquam est qui dolorem ipsum quia dolor sit amet
         </span>
 
         <span>Długość wzorca: </span>
-        <span>...</span><br>
+        <span class="badge stats-value-badge">50</span><br>
 
         <span>Długość tekstu: </span>
-        <span>...</span><br>
+        <span class="badge stats-value-badge">876</span><br>
+
+        <span>Minimalne podobieństwo: </span>
+        <span class="badge stats-value-badge percent">80</span><br>
 
         <span>Czas poszukiwań: </span>
-        <span>...</span><br>
+        <span class="badge stats-value-badge">200 ms</span><br>
 
         <span>Liczba odnalezionych dopasowań: </span>
-        <span>...</span><br>
+        <span class="badge stats-value-badge">50</span><br>
 
         <br>
 
@@ -25,18 +28,18 @@
         <canvas id="lastHistChart" width="300" height="150"></canvas>
     </div>
 
-    <div id="all-search-stats-container" class="container">
-        <span>Dla wszystkich wyszukiwań: </span><br>
+    <div id="all-search-stats-container" class="container border-bottom">
+        <span>Dla wszystkich wyszukiwań </span><br>
         <br>
 
         <span>Szukanych wzorców: </span>
-        <span>...</span><br>
+        <span class="badge stats-value-badge">4</span><br>
 
         <span>Odnalezionych dopasowań: </span>
-        <span>...</span><br>
+        <span class="badge stats-value-badge">345</span><br>
 
         <span>Przeanalizowanych znaków: </span>
-        <span>...</span><br>
+        <span class="badge stats-value-badge">12455</span><br>
     </div>
 
     <div style="width: 100%; background-color: darkorange; margin-top: 30px; padding: 5px;" class="text-center">

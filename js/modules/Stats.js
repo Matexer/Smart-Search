@@ -6,13 +6,13 @@ export class Stats extends Basic {
         super(root, "html/statsContainer.html");
     }
 
-    static drawLastHistchart(labels, data) {
+    static drawLastHistChart(xs, ys) {
        return new Chart($('#lastHistChart'), {
             type: 'bar',
             data: {
-                labels: labels,
+                labels: ys,
                 datasets: [{
-                    data: data,
+                    data: xs,
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
@@ -34,12 +34,30 @@ export class Stats extends Basic {
                     }
                 },
                 scales: {
-                    y: {
-                        beginAtZero: true
+                    yAxes: {
+                        title: {
+                            display: true,
+                            text: "Wystąpienia",
+                            font: {
+                                size: 15
+                            }
+                        },
+                        ticks: {
+                            precision: 0
+                        }
+                    },
+                    xAxes: {
+                        title: {
+                            display: true,
+                            text: "Odległość edycji",
+                            font: {
+                                size: 15
+                            }
+                        }
                     }
-                }
+                },
             }
         });
-
+        
     }
 }

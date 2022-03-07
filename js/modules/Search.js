@@ -10,4 +10,12 @@ export class Search extends Basic {
     static getPattern() {
         return $("#pattern").val();
     }
+
+    static showOutputCotainer() {
+        $("#output-container").show();
+    }
+
+    static hideOutputCotainer() {
+        $("#output-container").hide();
+    }
 }

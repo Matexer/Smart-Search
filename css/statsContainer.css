@@ -3,3 +3,10 @@
     max-height: 256px;
     overflow-y: auto;
 }
+
+.stats-value-badge {
+    font-size: 0.85em;
+    padding: 3px;
+    background-color: yellowgreen;
+    color: black;
+}

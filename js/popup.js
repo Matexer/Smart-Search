@@ -11,15 +11,16 @@ class Popup {
         this.statsWindow = new Stats($("#content"));
         this.settingsWindow = new Settings($("#content"));
 
-        Header.showSearchContainer();
+        Header.showStatsContainer();
 
         $("#search-btn").click(function() {
             console.log(Search.getPattern());
+            Search.showOutputCotainer();
         })
 
-        var labels = [6, 4, 3, 2, 1, 0];
-        var data = [12, 19, 3, 5, 2, 3];
-        var lastHistvhart = Stats.drawLastHistchart(labels, data);
+        var y = [6, 4, 3, 2, 1, 0];
+        var x = [12, 19, 3, 5, 2, 3];
+        var lastHistvhart = Stats.drawLastHistChart(x, y);
 
     }
 }
