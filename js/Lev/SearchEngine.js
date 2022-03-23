@@ -6,7 +6,7 @@ export class SearchEngine {
 
     static lookFor(pattern, text, maxDistance) {
         var SizeTVal = this.getSizeTVal(pattern);
-        let Engine = this.getEngine(SizeTVal);
+        var Engine = this.getEngine(SizeTVal);
         return Engine.lookFor(pattern, text, maxDistance);
     }
 

@@ -15,4 +15,6 @@ class Logic {
     }
 };
 
-Logic.test();
+$( document ).ready(function() {
+    Logic.test();
+});

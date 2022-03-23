@@ -4,7 +4,25 @@
   "version": "1.0",
   "manifest_version": 3,
 
+  "permissions": [
+    "activeTab"
+  ],
+
+  "content_security_policy": {
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'wasm-unsafe-eval'"
+  },
+
+  "background": {
+    "service_worker": "js/event.js"
+  },
+
   "action": {
     "default_popup": "popup.html"
+  },
+
+  "sandbox": {
+    "pages": [
+      "html/SearchEngineSanbox.html"
+    ]
   }
 }
