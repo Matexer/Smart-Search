@@ -8,14 +8,21 @@ function getRedableContent(tab) {
 };
 
 
-function sendResponse() {
+function responseCallback() {
 
-};
+}
 
 
 chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
     sendResponse(responseObject);
 });
+
+
+chrome.runtime.onMessage.addListener(
+    function(message,sender,sendResponse) {
+    console.log("Wiadomośc otrzymana.");
+    });
+
 
 

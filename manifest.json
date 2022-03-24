@@ -22,7 +22,7 @@
 
   "sandbox": {
     "pages": [
-      "html/SearchEngineSanbox.html"
+      "seachSandbox/searchEngineSanbox.html"
     ]
   }
 }

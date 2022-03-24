@@ -27,3 +27,6 @@ class Popup {
 
 
 var popup = new Popup();
+
+// var iframe = document.getElementById('sandbox-iframe');
+// iframe.contentWindow.postMessage("Egg", '*')
