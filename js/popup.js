@@ -11,10 +11,28 @@ class Popup {
         this.statsWindow = new Stats($("#content"));
         this.settingsWindow = new Settings($("#content"));
 
-        Header.showStatsContainer();
+        Header.showSearchContainer();
+
+        var iframe = document.querySelector("iframe");
+        var _window = iframe.contentWindow;
+
+        window.addEventListener("message", function(e) {
+        var output = e.data;
+        console.log();
+        // for(var i = 0 ; i < output.size(); i++) {
+        //     console.log(output.get(i).distance);
+        // }
+        }, false)
+
+        var searchData = {
+            pattern: "Egg",
+            text: "hcshrwhvriasajkshdfEgjdhfgEGgfakfuhaeu",
+            maxDistance: 10
+        }
 
         $("#search-btn").click(function() {
             console.log(Search.getPattern());
+            _window.postMessage(searchData, "*")
             Search.showOutputCotainer();
         })
 
@@ -27,6 +45,3 @@ class Popup {
 
 
 var popup = new Popup();
-
-// var iframe = document.getElementById('sandbox-iframe');
-// iframe.contentWindow.postMessage("Egg", '*')
