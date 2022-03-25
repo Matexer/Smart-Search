@@ -13,6 +13,7 @@ class Popup {
 
         Header.showSearchContainer();
 
+        //Search Engine
         var iframe = document.querySelector("iframe");
         var _window = iframe.contentWindow;
 
@@ -23,17 +24,36 @@ class Popup {
         //     console.log(output.get(i).distance);
         // }
         }, false)
+        // end - Search Engine
+
+        //var content_port = chrome.runtime.connect({name: "popup-content"});
 
         var searchData = {
             pattern: "Egg",
-            text: "hcshrwhvriasajkshdfEgjdhfgEGgfakfuhaeu",
+            text: "",
             maxDistance: 10
         }
 
         $("#search-btn").click(function() {
-            console.log(Search.getPattern());
-            _window.postMessage(searchData, "*")
+            //content_port.postMessage("getTextContent");
+
+            chrome.tabs.query(
+                {active: true, currentWindow: true},
+
+                function(tabs) {
+                    chrome.runtime.sendMessage({type: "getTextContent"});
+            }
+
+            );
+
             Search.showOutputCotainer();
+        })
+
+        chrome.runtime.onMessage.addListener((msg) => {
+            if (msg.type = "sendTextContent") {
+                searchData.text = msg.textContent;
+                _window.postMessage(searchData, "*")
+            }
         })
 
         var y = [6, 4, 3, 2, 1, 0];
@@ -45,3 +65,23 @@ class Popup {
 
 
 var popup = new Popup();
+
+
+// async function getTabId() {
+//     let queryOptions = { active: true, currentWindow: true };
+//     let [tab] = await chrome.tabs.query(queryOptions);
+//     var tabId = tab.id;
+//     return tabId;
+// }
+
+// async function getContent() {
+//     var tabId = await getTabId();
+
+//     chrome.scripting.executeScript(
+//         {
+//             target: {tabId: tabId, allFrames: true},
+//             func: getTextContent,
+//         }, (injectionResults) => {
+//             console.log(injectionResults[0].result);
+//     });
+// }

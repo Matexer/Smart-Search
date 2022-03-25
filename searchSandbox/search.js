@@ -1,14 +1,13 @@
 import {SearchEngine} from "./Lev/SearchEngine.js"
 
 
-function search(patter, text, maxDistance) {
+function search(pattern, text, maxDistance) {
     SearchEngine.setEncoding("utf-8");
 
     var outputArray = [];
 
-
     var output = SearchEngine.lookFor(
-        e.data.pattern, e.data.text, e.data.maxDistance);
+        pattern, text, maxDistance);
 
     for(var i = 0 ; i < output.size(); i++) {
         outputArray[i]
@@ -21,9 +20,14 @@ function search(patter, text, maxDistance) {
 
 window.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("message", function(e) {
+
+        console.log(e);
+
         window.parent.postMessage(
-            search(e.data.pattern, e.data.text, e.data.maxDistance),
-            "*")
+            search(
+                e.data.pattern, e.data.text, e.data.maxDistance),
+                "*"
+            )
     }, false)
 
 }, false)

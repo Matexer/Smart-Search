@@ -1,19 +1,26 @@
+// async function getTabId() {
+//     let queryOptions = { active: true, currentWindow: true };
+//     let [tab] = await chrome.tabs.query(queryOptions);
+//     var tabId = tab.id;
+//     return tabId;
+// }
 
-function getRedableContent(tab) {
-    var text;
-    chrome.tabs.executeScript(tab.id,
-        {code: 'document.body.innerText;'},
-        text);
-    return text;
-};
+// async function getContent() {
+//     var tabId = await getTabId();
+
+//     chrome.scripting.executeScript(
+//         {
+//             target: {tabId: tabId, allFrames: true},
+//             file: 'content.js'
+//         }
+// )};
 
 
-function responseCallback() {
-
-}
-
-
-chrome.runtime.onMessage.addListener(
-    function(message,sender,sendResponse) {
-    console.log("Wiadomośc otrzymana.");
-});
+// chrome.runtime.onMessage.addListener(
+//     function(message, callback) {
+//       if (message == "injectContentScript"){
+//         chrome.tabs.executeScript({
+//           file: 'contentScript.js'
+//         });
+//       }
+// });
