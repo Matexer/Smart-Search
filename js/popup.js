@@ -37,11 +37,13 @@ class Popup {
         $("#search-btn").click(function() {
             //content_port.postMessage("getTextContent");
 
+            console.log("Wiadomość do content");
             chrome.tabs.query(
                 {active: true, currentWindow: true},
 
                 function(tabs) {
-                    chrome.runtime.sendMessage({type: "getTextContent"});
+                    chrome.tabs.sendMessage(tabs[0].id,
+                        {type: "getTextContent"});
             }
 
             );
@@ -52,6 +54,7 @@ class Popup {
         chrome.runtime.onMessage.addListener((msg) => {
             if (msg.type = "sendTextContent") {
                 searchData.text = msg.textContent;
+                console.log("Wywołanie search");
                 _window.postMessage(searchData, "*")
             }
         })

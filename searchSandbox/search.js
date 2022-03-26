@@ -21,8 +21,6 @@ function search(pattern, text, maxDistance) {
 window.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("message", function(e) {
 
-        console.log(e);
-
         window.parent.postMessage(
             search(
                 e.data.pattern, e.data.text, e.data.maxDistance),
