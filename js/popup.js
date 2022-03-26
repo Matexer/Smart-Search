@@ -13,30 +13,34 @@ class Popup {
 
         Header.showSearchContainer();
 
-        //Search Engine
-        var iframe = document.querySelector("iframe");
-        var _window = iframe.contentWindow;
-
-        window.addEventListener("message", function(e) {
-        var output = e.data;
-        console.log();
-        // for(var i = 0 ; i < output.size(); i++) {
-        //     console.log(output.get(i).distance);
-        // }
-        }, false)
-        // end - Search Engine
-
-        //var content_port = chrome.runtime.connect({name: "popup-content"});
-
         var searchData = {
             pattern: "Egg",
             text: "",
             maxDistance: 10
         }
 
-        $("#search-btn").click(function() {
-            //content_port.postMessage("getTextContent");
+        //Search Engine
+        var iframe = document.querySelector("iframe");
+        var _window = iframe.contentWindow;
 
+        window.addEventListener("message", function(e) {
+        var output = e.data;
+
+        for(var out of e.data) {
+            Search.addOutput(
+                searchData.text.substring(out.index, out.length + out.index),
+                out.distance)
+        }
+        }, false)
+        // end - Search Engine
+
+        $("#search-btn").click(function() {
+            Search.clearOutputList();
+            searchData.pattern = Search.getPattern();
+            //searchData.maxDistance = length(searchData.pattern) - Search.getMinSimilarity();
+            searchData.maxDistance = Search.getMinSimilarity();
+
+            console.log(searchData.pattern);
             console.log("Wiadomość do content");
             chrome.tabs.query(
                 {active: true, currentWindow: true},
@@ -47,14 +51,12 @@ class Popup {
             }
 
             );
-
             Search.showOutputCotainer();
         })
 
         chrome.runtime.onMessage.addListener((msg) => {
             if (msg.type = "sendTextContent") {
-                searchData.text = msg.textContent;
-                console.log("Wywołanie search");
+                searchData.text = msg.textContent.replace(/(\r\n|\n|\r)/gm, "");
                 _window.postMessage(searchData, "*")
             }
         })

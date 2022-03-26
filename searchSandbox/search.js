@@ -2,19 +2,24 @@ import {SearchEngine} from "./Lev/SearchEngine.js"
 
 
 function search(pattern, text, maxDistance) {
-    SearchEngine.setEncoding("utf-8");
+    SearchEngine.setEncoding("utf-16");
 
     var outputArray = [];
 
     var output = SearchEngine.lookFor(
         pattern, text, maxDistance);
 
-    for(var i = 0 ; i < output.size(); i++) {
-        outputArray[i]
-        console.log(output.get(i).distance);
+    let maxVals = Math.min(10, output.size());
+    for(var i = 0 ; i < maxVals; i++) {
+        outputArray.push({
+            index: output.get(i).index,
+            length: output.get(i).length,
+            distance: output.get(i).distance
+        });
     }
 
     output.delete();
+    return outputArray;
 }
 
 
