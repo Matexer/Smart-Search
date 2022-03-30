@@ -1,12 +1,33 @@
 export class SearchEngine {
     static encodingVal = "";
+
     static deletionCost = 1;
     static insertionCost = 1;
+    static swapCost = 1;
+
+    static purifyRange = 5;
+    static fixRange = 5;
+
+    static muliThreading = false;
+    static multiThreadingMinComplexity = 100;
+    static maxNumOfThreads = 12;
 
 
     static lookFor(pattern, text, maxDistance) {
         var SizeTVal = this.getSizeTVal(pattern);
         var Engine = this.getEngine(SizeTVal);
+
+        Engine.setDeletionCost(this.deletionCost);
+        Engine.setInsertionCost(this.insertionCost);
+        Engine.setSwapCost(this.swapCost);
+
+        Engine.setPurifyRange(this.purifyRange);
+        Engine.setFixRange(this.fixRange);
+
+        Engine.setMultiThreading(this.muliThreading);
+        Engine.setMultiThreadingMinComplexity(this.multiThreadingMinComplexity);
+        Engine.setMaxNumOfThreads(this.setMaxNumOfThreads);
+
         return Engine.lookFor(pattern, text, maxDistance);
     }
 
