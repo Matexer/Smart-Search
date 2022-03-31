@@ -1,22 +1,24 @@
-import {SearchContainer} from './modules/SearchContainer.js'
-import {Header} from './modules/Header.js'
-import {StatsContainer} from './modules/StatsContainer.js'
-import {SettingsContainer} from './modules/SettingsContainer.js'
+import {SearchContainer} from './popup/SearchContainer.js'
+import {Header} from './popup/Header.js'
+import {StatsContainer} from './popup/StatsContainer.js'
+import {SettingsContainer} from './popup/SettingsContainer.js'
 
 
-class Popup {
+export class Popup {
     constructor() { 
         this.header = new Header();
         this.searchCont = new SearchContainer();
         this.statsCont = new StatsContainer();
         this.settingsCont = new SettingsContainer();
-
-        this.renderAll()
-        .then(() => this._bindHeaderIcons())
-        .then(() => this._showSearchContainer());
     }
 
-    async renderAll() {
+    async initialize() {
+        return await this._renderAll()
+            .then(() => this._bindHeaderIcons())
+            .then(() => this._showSearchContainer());
+    }
+
+    async _renderAll() {
         return await Promise.all([
             this.header.render("#head"),
 
@@ -111,6 +113,3 @@ class Popup {
     //     var lastHistvhart = Stats.drawLastHistChart(x, y);
 
 }
-
-
-const popup = new Popup();
