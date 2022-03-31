@@ -1,46 +1,20 @@
-import { Basic } from "./Basic.js";
+import { DOMElement } from "./DOMElement.js";
 
 
-export class Header extends Basic {
-    constructor(root) {
-        super(root, "html/headerContainer.html");
-        Header.bindIcons();
+export class Header extends DOMElement {
+    _HTMLPath = "html/headerContainer.html";
+    _id = "#header-container";
+
+    searchIconId = "#search-icon";
+    statsIconId = "#stats-icon";
+    settingsIconId = "#settings-icon";
+
+
+    markSelected(iconId) {
+        $(iconId).addClass("icon-selected");
     }
 
-    static bindIcons() {
-        $("#search-icon").click(function() {
-            Header.hideAll();
-            Header.showSearchContainer();
-        });
-
-        $("#stats-icon").click(function() {
-            Header.hideAll();
-            Header.showStatsContainer();
-        });
-
-        $("#settings-icon").click(function() {
-            Header.hideAll();
-            Header.showSettingsContainer();
-        });
-    }
-
-    static hideAll() {
-        $("#content").children().hide();
+    unselectIcons() {
         $("#icons-container").children().removeClass("icon-selected");
-    }
-
-    static showSearchContainer() {
-        $("#search-container").show();
-        $("#search-icon").addClass("icon-selected")
-    }
-
-    static showStatsContainer() {
-        $("#stats-container").show();
-        $("#stats-icon").addClass("icon-selected")
-    }
-
-    static showSettingsContainer() {
-        $("#settings-container").show();
-        $("#settings-icon").addClass("icon-selected")
     }
 }

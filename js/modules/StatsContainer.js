@@ -1,12 +1,11 @@
-import { Basic } from "./Basic.js";
+import { Container } from "./Container.js";
 
 
-export class Stats extends Basic {
-    constructor(root) {
-        super(root, "html/statsContainer.html");
-    }
+export class StatsContainer extends Container {
+    _id = "#stats-container";
+    _HTMLPath = "html/statsContainer.html";
 
-    static drawLastHistChart(xs, ys) {
+    drawLastHistChart(xs, ys) {
        return new Chart($('#lastHistChart'), {
             type: 'bar',
             data: {

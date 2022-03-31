@@ -1,5 +1,4 @@
 #stats-container {
-    display: none;
     max-height: 256px;
     overflow-y: auto;
 }

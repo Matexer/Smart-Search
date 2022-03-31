@@ -12,31 +12,3 @@
 .icon-selected {
     filter: invert(55%) sepia(99%) saturate(2481%) hue-rotate(140deg) brightness(95%) contrast(101%);
 }
-
-#header-container {
-    background-color: silver;
-    width: 100%;
-}
-
-#icons-container {
-    width: fit-content;
-    padding: 0;
-    margin-left: 5px;
-}
-
-#search-icon {
-    margin-left: 0;
-    padding-left: 0;
-}
-
-/* #stats-icon {
-}
-
-#settings-icon {
-} */
-
-#title {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-}
