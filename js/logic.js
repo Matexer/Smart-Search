@@ -24,31 +24,52 @@ class Logic {
     }
 
     _initializeSearch() {
-        console.log('_initializeSearch');
-        this.#searchData = this.#popup.getSearchData();
-        //Do usunięcia w tym miejscu
-        this.#searchData.text = "Testowy tejst fjkhafskjhafsdjjhkafjkafsd";
+        let data = this.#popup.getSearchData();
+        this.#searchData.pattern = data.pattern;
 
-        this.#messenger.sendSearchData(this.#searchData);
+        //TODO Uwzględnić dla różnych kosztów edycji 
+        this.#searchData.maxDistance = Math.max(data.pattern.length - data.minSimilarity, 0);
+        
+        this.#messenger.askForTextContent();
     }
 
     _activateListeners() {
         window.addEventListener("message", event => this._handleMessageEvent(event), false);
-        chrome.runtime.onMessage.addListener(() => this._handleChromeMessage());
+        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+            this._handleChromeMessage(message);
+            sendResponse();
+        })
     }
 
+    //From Search - receiving SearchOutput
     _handleMessageEvent(event) {
-        console.log("_handleMessageEvent");
-        let output = this.#messenger.handleEventMessage(event.data);
+        let output = this.#messenger.handleMessage(event.data);
         if (!output) return;
-        console.log(output);
+        output = this._parseOutput(output);
+        this.#popup.searchCont.showOutput(output);
     }
 
+    //From content - receiving TextContent
     _handleChromeMessage(message) {
-        let textContent = this.#messenger.handleChromeMessage(message);
+        let textContent = this.#messenger.handleMessage(message);
         if (textContent) {
             this.#searchData.text = textContent;
+            this.#messenger.sendSearchData(this.#searchData);
         }
+    }
+
+    _parseOutput(output) {
+        let parsedOutput = [];
+        console.log(output);
+        for (const out of output) {
+            let word = this.#searchData.text.substr(out.index, out.length);
+            parsedOutput.push({
+                text: word,
+                distance: out.distance
+            })
+        }
+
+        return parsedOutput;
     }
 }
 

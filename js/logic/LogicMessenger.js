@@ -1,30 +1,24 @@
 export class LogicMessenger {
     #searchSandbox = document.querySelector("iframe").contentWindow;
 
-    handleEventMessage(message) {
-        if (message.type != "SearchOutput") {
-            return null;
-        }
-        else {
+    handleMessage(message) {
+        if (message.type === "TextContent" || message.type === "SearchOutput") {
             return message.content;
         }
-    }
-
-    handleChromeMessage(message) {
-        if (message.type != "TextContent") {
-            return null;
-        }
         else {
-            return message.content;
+            return null;
         }
     }
 
     askForTextContent() {
-
+        chrome.tabs.query(
+            {active: true, currentWindow: true}, (tabs) => {
+                chrome.tabs.sendMessage(tabs[0].id, {type: "GetTextContent"}).catch(err => {});
+            }
+        )
     }
 
     sendSearchData(data) {
-        console.log("sendSearchData");
         let message = {type: "SearchData", content: data};
         this.#searchSandbox.postMessage(message, "*");
     }

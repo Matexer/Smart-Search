@@ -1,5 +1,5 @@
 export class SearchEngine {
-    encodingVal = "8";
+    encodingVal = "16";
 
     deletionCost = 1;
     insertionCost = 1;
@@ -50,7 +50,7 @@ export class SearchEngine {
 
     getSizeTVal(pattern) {
         if (pattern.length < 256) {
-            return "";
+            return "8";
         }
         else if (pattern.length < 65536) {
             return "16";
@@ -64,6 +64,6 @@ export class SearchEngine {
     }
 
     getEngine(sizeTVal) {
-        return Module["SearchEngine" + sizeTVal + "Str" + this.encodingVal];
+        return Module["SearchEngine" + this.encodingVal + "Str" + sizeTVal];
     }
 };

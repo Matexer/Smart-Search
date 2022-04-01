@@ -14,8 +14,13 @@ export class SearchContainer extends Container {
             .then(() => this._outputCont.render("#output"));
     }
 
-    showOutput() {
+    showOutput(outputData) {
+        this._outputCont.clear();
         this._outputCont.show();
+
+        for (const output of outputData) {
+            this._outputCont.add(output.text, output.distance);
+        }
     }
 
     getPattern() {

@@ -3,10 +3,11 @@ function getTextContent() {
 }
 
 
-chrome.runtime.onMessage.addListener(function(msg) {
-    if (msg.type = "getTextContent") {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type = "GetTextContent") {
         chrome.runtime.sendMessage({
-            type: "sendTextContent",
-            textContent: getTextContent()});
+            type: "TextContent",
+            content: getTextContent()}).catch(err => {});
     }
+    sendResponse();
 });

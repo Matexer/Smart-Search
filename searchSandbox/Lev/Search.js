@@ -21,6 +21,7 @@ export class Search {
     }
 
     _lookFor(data) {
+        console.log(data);
         let pattern = data.pattern;
         let text = data.text;
         let maxDistance = data.maxDistance;
