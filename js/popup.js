@@ -13,13 +13,21 @@ export class Popup {
     }
 
     async initialize() {
-        return await this._renderAll()
-            .then(() => this._bindHeaderIcons())
-            .then(() => this._showSearchContainer());
+        await this._renderAll();
+        
+        this._bindHeaderIcons();
+        this._showSearchContainer();
+    }
+
+    getSearchData() {
+        let data = {pattern: this.searchCont.getPattern(),
+                       minSimilarity: this.searchCont.getMinSimilarity()
+        }
+        return data;
     }
 
     async _renderAll() {
-        return await Promise.all([
+        return Promise.all([
             this.header.render("#head"),
 
             this.searchCont.render("#content"),
@@ -28,7 +36,6 @@ export class Popup {
         ]);
     }
 
-    
     _bindHeaderIcons() {
         $(this.header.searchIconId).click(() => this._showSearchContainer());
         $(this.header.statsIconId).click(() => this._showStatsContainer());

@@ -6,6 +6,7 @@ export class DOMElement {
         return await fetch(this._HTMLPath)
                     .then(response => response.text())
                     .then(text => $(rootID).append(text))
+                    .then(() => true);
     }
 
     get id() {return this._id};

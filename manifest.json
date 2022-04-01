@@ -12,10 +12,6 @@
     "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval'"
   },
 
-  "background": {
-    "service_worker": "js/event.js"
-  },
-
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

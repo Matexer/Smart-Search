@@ -43,7 +43,7 @@ export class SearchEngine {
                 this.encodingVal = "32";
                 break
             default:
-                console.error("Attempt to set inappropriate encoding. \
+                new Error("Attempt to set inappropriate encoding. \
                     Possible values: utf-8, utf-16, utf-32")
         }
     }
