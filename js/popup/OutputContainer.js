@@ -8,7 +8,7 @@ export class OutputContainer extends Container {
     add(text, distance) {
         $("#output-list").append('\
         <li class="list-group-item text-truncate search-output"> \
-        <span class="badge output-badge percent">' + distance +'</span> \
+        <span class="badge output-badge">' + distance +'</span> \
         <span>' + text + '</span> \
         </li>');
     }

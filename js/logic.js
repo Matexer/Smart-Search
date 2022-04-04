@@ -19,6 +19,8 @@ class Logic {
         // maxNumOfThreads = 12;
         }
 
+    #minSimilarity = null;
+
     constructor() {
         this.initialize();
     }
@@ -40,7 +42,8 @@ class Logic {
 
         //TODO Uwzględnić dla różnych kosztów edycji 
         this.#searchData.maxDistance = Math.max(data.pattern.length - data.minSimilarity, 0);
-        
+        this.#minSimilarity = data.minSimilarity;
+
         this.#messenger.askForTextContent();
     }
 
@@ -56,10 +59,10 @@ class Logic {
     _handleMessageEvent(event) {
         let msg = this.#messenger.handleMessage(event.data);
         if (!msg) return;
-        console.log(msg);
+
         let output = this._parseOutput(msg.output);
         this.#popup.searchCont.showOutput(output);
-        // this.#popup.statsCont.showStats(msg.stats);
+        this._updateStats(msg.stats);
     }
 
     //From content - receiving TextContent
@@ -76,7 +79,6 @@ class Logic {
 
     _parseOutput(output) {
         let parsedOutput = [];
-        console.log(output);
         for (const out of output) {
             let word = this.#searchData.text.substr(out.index, out.length);
             parsedOutput.push({
@@ -86,6 +88,24 @@ class Logic {
         }
 
         return parsedOutput;
+    }
+
+    _updateStats(newStats) {
+        let histData = {xs: [], ys: []}
+
+        for (const x in newStats.histData) {
+            histData.xs.push(x);
+            histData.ys.push(newStats.histData[x]);
+        }
+
+        let lastData = {pattern: this.#searchData.pattern,
+                        textLength: this.#searchData.text.length,
+                        minSimilarity: this.#minSimilarity,
+                        searchTime: newStats.searchTime,
+                        numOfOutputs: newStats.numOfOutputs,
+                        histData: histData};
+
+        this.#popup.statsCont.showLastSearchStats(lastData);
     }
 }
 

@@ -4,9 +4,6 @@
 @import url(statsContainer.css);
 @import url(settingsContainer.css);
 
-body {
-    background-color: black;
-}
 
 #main {
     padding: 0;

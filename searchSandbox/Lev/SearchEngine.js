@@ -2,8 +2,8 @@ export class SearchEngine {
     #config = {deletionCost: 1,
         insertionCost: 1,
         swapCost: 1,
-        purifyRange: 1,
-        fixRange: 1,
+        purifyRange: 10,
+        fixRange: 2,
         encoding: 16,
         maxNumOfOutputs: 10,
         // muliThreading = false;
@@ -26,7 +26,7 @@ export class SearchEngine {
 
         let outputArray = [];
         let statsData = this._parseStatsData(output);
-        statsData.searchingTime = Math.round(t1 - t0, 0);
+        statsData.searchTime = Math.round(t1 - t0, 0);
     
         let maxVals = Math.min(this.#config.maxNumOfOutputs, output.size());
         for(var i = 0 ; i < maxVals; i++) {

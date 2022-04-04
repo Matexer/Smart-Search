@@ -3,6 +3,10 @@
     overflow-y: auto;
 }
 
+#stats-search-time::after {
+    content: " ms";
+}
+
 .stats-value-badge {
     font-size: 0.85em;
     padding: 3px;

@@ -3,29 +3,28 @@
     <div id="last-search-stats-container" class="container border-bottom">
         <span>Dla ostatniego wyszukiwania</span><br>
 
-        <span class="list-group-item text-truncate search-output rounded">
-            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet
+        <span id="stats-pattern" class="list-group-item text-truncate search-output rounded">
         </span>
 
         <span>Długość wzorca: </span>
-        <span class="badge stats-value-badge">50</span><br>
+        <span id="stats-pattern-length" class="badge stats-value-badge"></span><br>
 
         <span>Długość tekstu: </span>
-        <span class="badge stats-value-badge">876</span><br>
+        <span id="stats-text-length" class="badge stats-value-badge"></span><br>
 
         <span>Minimalne podobieństwo: </span>
-        <span class="badge stats-value-badge percent">80</span><br>
+        <span id="stats-min-similarity" class="badge stats-value-badge"></span><br>
 
         <span>Czas poszukiwań: </span>
-        <span class="badge stats-value-badge">200 ms</span><br>
+        <span id="stats-search-time" class="badge stats-value-badge"></span><br>
 
         <span>Liczba odnalezionych dopasowań: </span>
-        <span class="badge stats-value-badge">50</span><br>
+        <span id="stats-numOfOutputs" class="badge stats-value-badge"></span><br>
 
         <br>
 
         <span>Histogram dopasowań</span>
-        <canvas id="lastHistChart" width="300" height="150"></canvas>
+        <canvas id="barChart" width="300" height="150"></canvas>
     </div>
 
     <div id="all-search-stats-container" class="container border-bottom">
@@ -33,13 +32,13 @@
         <br>
 
         <span>Szukanych wzorców: </span>
-        <span class="badge stats-value-badge">4</span><br>
+        <span id="stats-numOfPatterns" class="badge stats-value-badge">4</span><br>
 
         <span>Odnalezionych dopasowań: </span>
-        <span class="badge stats-value-badge">345</span><br>
+        <span id="stats-totalNumOfOutputs" class="badge stats-value-badge">345</span><br>
 
         <span>Przeanalizowanych znaków: </span>
-        <span class="badge stats-value-badge">12455</span><br>
+        <span id="stats-numOfAnalizedSigns" class="badge stats-value-badge">12455</span><br>
     </div>
 
     <div style="width: 100%; background-color: darkorange; margin-top: 30px; padding: 5px;" class="text-center">
