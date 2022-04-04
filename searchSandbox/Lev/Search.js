@@ -7,44 +7,21 @@ export class Search {
     #engine = new SearchEngine();
 
     constructor() {
-        this.activateListeners();
+        this._activateListeners();
     }
 
-    activateListeners() {
-        window.addEventListener("message", event => this._handleMessageEvent(event), false);
+    _activateListeners() {
+        window.addEventListener("message", event => this._handleMessageEvent(event.data), false);
     }
 
-    _handleMessageEvent(event) {
-        let data = this.#messenger.handleMessage(event.data);
-        if (!data) return;
-        this.#messenger.sendSearchOutput(this._lookFor(data));
-    }
+    _handleMessageEvent(eventData) {
+        let msg = this.#messenger.handleMessage(eventData);
+        if (!msg) return;
 
-    _lookFor(data) {
-        console.log(data);
-        let pattern = data.pattern;
-        let text = data.text;
-        let maxDistance = data.maxDistance;
-
-        //Do usunięcia w tym miejscu
-        this.#engine.setEncoding("utf-16");
-    
-        let outputArray = [];
-    
-        let output = this.#engine.lookFor(
-            pattern, text, maxDistance);
-    
-        let maxVals = Math.min(10, output.size());
-        for(var i = 0 ; i < maxVals; i++) {
-            outputArray.push({
-                index: output.get(i).index,
-                length: output.get(i).length,
-                distance: output.get(i).distance
-            });
+        if (msg.config) {
+            this.#engine.setConfig(msg.config);
         }
-    
-        output.delete();
-        return outputArray;
-    }
 
+        this.#messenger.sendSearchOutput(this.#engine.lookFor(msg.searchData));
+    }
 }

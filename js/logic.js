@@ -7,6 +7,17 @@ class Logic {
     #messenger = new LogicMessenger();
 
     #searchData = {};
+    #searchConfig = {deletionCost: 1,
+        insertionCost: 1,
+        swapCost: 1,
+        purifyRange: 5,
+        fixRange: 3,
+        encoding: 16,
+        maxNumOfOutputs: 10,
+        // muliThreading = false;
+        // multiThreadingMinComplexity = 100;
+        // maxNumOfThreads = 12;
+        }
 
     constructor() {
         this.initialize();
@@ -43,10 +54,12 @@ class Logic {
 
     //From Search - receiving SearchOutput
     _handleMessageEvent(event) {
-        let output = this.#messenger.handleMessage(event.data);
-        if (!output) return;
-        output = this._parseOutput(output);
+        let msg = this.#messenger.handleMessage(event.data);
+        if (!msg) return;
+        console.log(msg);
+        let output = this._parseOutput(msg.output);
         this.#popup.searchCont.showOutput(output);
+        // this.#popup.statsCont.showStats(msg.stats);
     }
 
     //From content - receiving TextContent
@@ -54,7 +67,10 @@ class Logic {
         let textContent = this.#messenger.handleMessage(message);
         if (textContent) {
             this.#searchData.text = textContent;
-            this.#messenger.sendSearchData(this.#searchData);
+            let data = {searchData: this.#searchData,
+                        config: this.#searchConfig};
+
+            this.#messenger.sendSearchData(data);
         }
     }
 
