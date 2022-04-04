@@ -1,5 +1,6 @@
 import {Popup} from './popup.js';
 import {LogicMessenger} from './logic/LogicMessenger.js'
+import {Memory} from './logic/Memory.js'
 
 
 class Logic {

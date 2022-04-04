@@ -5,7 +5,7 @@
   "manifest_version": 3,
 
   "permissions": [
-    "activeTab", "scripting", "tabs"
+    "activeTab", "scripting", "tabs", "storage"
   ],
 
   "content_security_policy": {

@@ -2,14 +2,14 @@
     <div id="control-container" class="container-lg" style="padding: 5px;">
 
         <div class="input-group mb-2" style="margin: 0!important">
-            <input id="pattern" type="text" class="form-control" style="margin-right: 4px;" placeholder="Szukana fraza...">
+            <input id="pattern" autocomplete="off" type="text" class="form-control" style="margin-right: 4px;" placeholder="Szukana fraza...">
             <button id="search-btn" type="button" class="btn btn-primary">Szukaj</button>
         </div>
 
         <span class="noselect" style="font-size: small;">Minimalne podobieństwo - filtrowanie</span>
 
         <div id="filter-container" style="display: inline-flex; width: 100%;" class="conatiner">
-            <input id="filter-value" type="text" style="padding: 4px; width: 10%; margin-right: 5px" class="form-control">
+            <input id="filter-value" value="0" autocomplete="off" type="text" style="padding: 4px; width: 10%; margin-right: 5px" class="form-control">
 
             <div id="slider-container" style="margin: 0 auto">
                 <div style="height: 15px;">

@@ -81,7 +81,7 @@ export class StatsContainer extends Container {
                     xAxes: {
                         title: {
                             display: true,
-                            text: "Odległość edycji",
+                            text: "Odległość Levenshteina",
                             font: {
                                 size: 15
                             }

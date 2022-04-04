@@ -11,7 +11,8 @@ export class SearchContainer extends Container {
 
     async render(rootID) {
         return await super.render(rootID)
-            .then(() => this._outputCont.render("#output"));
+            .then(() => this._outputCont.render("#output"))
+            .then(() => this._activateListeners());
     }
 
     showOutput(outputData) {
@@ -29,6 +30,19 @@ export class SearchContainer extends Container {
 
     getMinSimilarity() {
         return $("#filter-value").val();
+    }
+
+    _activateListeners() {
+        $("#filter-slider").on("input", () => this._updateFilterValue());
+        $("#pattern").on("input", () => this._updateFilterValue());
+    }
+
+    _updateFilterValue() {
+        let percent = $("#filter-slider").val();
+        let val = Math.round(percent * this.getPattern().length / 100, 0);
+        
+        $("#filter-value").val(val);
+        $("#filter-percent-value").text(percent);
     }
 
 }
