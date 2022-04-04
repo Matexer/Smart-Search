@@ -6,9 +6,10 @@ export class StatsContainer extends Container {
     _HTMLPath = "html/statsContainer.html";
     _chart = null;
 
+    resetBtnId = "#reset-stats-btn";
+
     showLastSearchStats(data) {
         $('#stats-pattern').text(data.pattern);
-        console.log(data);
         $('#stats-pattern-length').text(data.pattern.length);
         $('#stats-text-length').text(data.textLength);
         $('#stats-min-similarity').text(data.minSimilarity);
@@ -20,8 +21,8 @@ export class StatsContainer extends Container {
 
     showTotalSearchStats(data) {
         $('#stats-numOfPatterns').text(data.numOfPatterns);
-        $('#stats-totalNumOfOutputs').text(data.totalNumOfOutputs);
-        $('#stats-numOfAnalizedSigns').text(data.numOfAnalizedSigns);
+        $('#stats-totalNumOfOutputs').text(data.numOfOutputs);
+        $('#stats-numOfAnalizedSigns').text(data.analizedSigns);
     }
 
     _showOnChart(histData) {

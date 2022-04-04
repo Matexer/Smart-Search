@@ -6,6 +6,7 @@ import {Memory} from './logic/Memory.js'
 class Logic {
     #popup = new Popup();
     #messenger = new LogicMessenger();
+    #memory = new Memory();
 
     #searchData = {};
     #searchConfig = {deletionCost: 1,
@@ -31,10 +32,19 @@ class Logic {
 
         this._activateListeners();
         this._bindSearchBtn();
+        this._loadData();
     }
 
     _bindSearchBtn() {
         $(this.#popup.searchCont.searchBtnId).click(() => this._initializeSearch());
+        $(this.#popup.statsCont.resetBtnId).click(() => this._resetStats());
+    }
+
+    async _loadData() {
+        let stats = await this.#memory.getStats();
+        if (stats) {
+            this._showStats(stats);
+        }
     }
 
     _initializeSearch() {
@@ -91,7 +101,7 @@ class Logic {
         return parsedOutput;
     }
 
-    _updateStats(newStats) {
+    async _updateStats(newStats) {
         let histData = {xs: [], ys: []}
 
         for (const x in newStats.histData) {
@@ -106,7 +116,47 @@ class Logic {
                         numOfOutputs: newStats.numOfOutputs,
                         histData: histData};
 
-        this.#popup.statsCont.showLastSearchStats(lastData);
+        let totalStats = await this.#memory.getTotalStats();
+
+        if (totalStats) {
+            totalStats.numOfPatterns += 1;
+            totalStats.numOfOutputs += lastData.numOfOutputs;
+            totalStats.analizedSigns += lastData.textLength;
+        }
+        else {
+            totalStats = {}
+            totalStats.numOfPatterns = 1;
+            totalStats.numOfOutputs = lastData.numOfOutputs;
+            totalStats.analizedSigns = lastData.textLength;
+        }
+
+        let data = {stats: {
+            lastStats: lastData,
+            totalStats: totalStats
+        }}
+
+        this._showStats(data.stats);
+        this.#memory.saveLocal(data);
+    }
+
+    _showStats(stats) {
+        this.#popup.statsCont.showLastSearchStats(stats.lastStats);
+        this.#popup.statsCont.showTotalSearchStats(stats.totalStats);
+    }
+
+    async _resetStats() {
+        let stats = await this.#memory.getStats();
+        let totalStats = {numOfPatterns: 0,
+                          numOfOutputs: 0,
+                          analizedSigns: 0}
+
+        let data = {stats: {
+            lastStats: stats.lastStats,
+            totalStats: totalStats
+        }}
+
+        this.#popup.statsCont.showTotalSearchStats(totalStats);
+        this.#memory.saveLocal(data);
     }
 }
 
