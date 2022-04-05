@@ -39,6 +39,8 @@ export class SearchEngine {
     
         output.delete();
 
+        this._removeDuplicates(outputArray, text);
+
         let outputData = {output: outputArray,
                           stats: statsData};
         return outputData;
@@ -101,4 +103,22 @@ export class SearchEngine {
                          histData: histData};
         return statsData;
     }
+
+    _removeDuplicates(outputArray, text) {
+        for (let i = 0; i < outputArray.length; i++) {
+            const ele1 = outputArray[i];
+            let word1 = text.substr(ele1.index, ele1.length);
+            for (let j = i + 1; j < outputArray.length; j++) {
+                const ele2 = outputArray[i];
+                let word2 = text.substr(ele2.index, ele2.length);
+                console.log(word1, word2);
+                if (word1 == word2) {
+                    outputArray.splice(j, 1);
+                    j--;
+                }
+                console.log(outputArray);
+            }
+        }
+    }
+
 };
