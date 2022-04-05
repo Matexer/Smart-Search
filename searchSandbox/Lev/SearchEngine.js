@@ -69,7 +69,7 @@ export class SearchEngine {
     }
 
     _getEngine(sizeTVal) {
-        return Module["SearchEngine" + this.#config.encoding + "Str" + sizeTVal];
+        return Module["SearchEngineUTF" + this.#config.encoding + "Size" + sizeTVal];
     }
 
     _configEngine(engine) {
