@@ -5,7 +5,7 @@ $(function() {
     instance,
     $results,
     currentClass = "current",
-    offsetTop = 50,
+    offsetTop = 300,
     currentIndex = 0;
     
     function getTextContent() {
