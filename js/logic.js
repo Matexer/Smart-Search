@@ -12,7 +12,8 @@ class Logic {
     #minSimilarity = null;
 
     #settings = {};
-    #defaultSettings = {capitalLetters: true,
+    #defaultSettings = {
+        capitalLetters: true,
         maxNumOfOutputs: 10,
         defaultMinSimilarity: 80,
         deletionCost: 1,
@@ -39,12 +40,14 @@ class Logic {
         $(this.#popup.searchCont.searchBtnId).click(() => this._initializeSearch());
         $(this.#popup.statsCont.resetBtnId).click(() => this._resetStats());
         $(this.#popup.settingsCont.saveBtnId).click(() => this._updateSettings());
-        $(this.#popup.settingsCont.resetSettingsBtnId).click(() => this._resetSettings());
+        $(this.#popup.settingsCont.resetSettingsBtnId).click(() => this._resetSettings());       
     }
 
     async _loadData() {
-        let [stats, settings] = await Promise.all([this.#memory.getStats(),
-            this.#memory.getSettings()]);
+        let [stats, settings] = await Promise.all([
+            this.#memory.getStats(),
+            this.#memory.getSettings()
+        ]);
 
         if (stats) {
             this._showStats(stats);
@@ -72,10 +75,13 @@ class Logic {
     }
 
     _activateListeners() {
-        window.addEventListener("message", event => this._handleMessageEvent(event), false);
-        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-            this._handleChromeMessage(message);
-            sendResponse();
+        window.addEventListener("message",
+            event => this._handleMessageEvent(event), false);
+
+        chrome.runtime.onMessage.addListener(
+            (message, sender, sendResponse) => {
+                this._handleChromeMessage(message);
+                sendResponse();
         })
     }
 
@@ -86,6 +92,9 @@ class Logic {
 
         let output = this._parseOutput(msg.output);
         this.#popup.searchCont.showOutput(output);
+        $(this.#popup.searchCont.outputId).click(
+            output => this._higlight(output.currentTarget));
+
         this._updateStats(msg.stats);
     }
 
@@ -212,6 +221,11 @@ class Logic {
         this.#settings = this.#defaultSettings;
         this.#memory.saveSync(data);
         this.#popup.settingsCont.insertSettings(this.#defaultSettings);
+    }
+
+    _higlight(output) {
+        let val = $(output).find(this.#popup.searchCont.outputValId).text();
+        this.#messenger.askForHiglight(val);
     }
 }
 

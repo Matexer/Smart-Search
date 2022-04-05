@@ -8,6 +8,8 @@ export class SearchContainer extends Container {
     _outputCont = new OutputContainer();
 
     searchBtnId = "#search-btn";
+    outputId = this._outputCont.outputId;
+    outputValId = this._outputCont.outputValId;
 
     async render(rootID) {
         return await super.render(rootID)

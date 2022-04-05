@@ -18,6 +18,16 @@ export class LogicMessenger {
         )
     }
 
+    askForHiglight(text) {
+        let message = {type: "HiglightText", content: text};
+        chrome.tabs.query(
+            {active: true, currentWindow: true}, (tabs) => {
+                console.log("Asking for higlight");
+                chrome.tabs.sendMessage(tabs[0].id, message).catch(err => {});
+            }
+        )
+    }
+
     sendSearchData(data) {
         let message = {type: "SearchData", content: data};
         this.#searchSandbox.postMessage(message, "*");
