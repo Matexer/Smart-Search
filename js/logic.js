@@ -94,20 +94,22 @@ class Logic {
         let msg = this.#messenger.handleMessage(event.data);
         if (!msg) return;
 
-        let output = this._parseOutput(msg.output);
-        this.#popup.searchCont.showOutput(output);
-        $(this.#popup.searchCont.outputId).click(
-            output => this._higlight(output.currentTarget));
-
-        this._updateStats(msg.stats);
+        let output = this._parseOutput(msg.content.output);
+        this._removeUnselectable(output);
+        this._updateStats(msg.content.stats);
     }
 
     //From content - receiving TextContent
-    _handleChromeMessage(message) {
-        let textContent = this.#messenger.handleMessage(message);
-        if (textContent) {
-            this.#searchData.text = textContent;
+    _handleChromeMessage(msg) {
+        if (msg.type == "TextContent") {
+            this.#searchData.text = msg.content;
             this._search();
+        }
+        else if (msg.type == "ClearSearchOutput") {
+            this.#popup.searchCont.showOutput(msg.content);
+
+            $(this.#popup.searchCont.outputId).click(
+                output => this._higlight(output.currentTarget));
         }
     }
 
@@ -230,6 +232,10 @@ class Logic {
     _higlight(output) {
         let val = $(output).find(this.#popup.searchCont.outputValId).text();
         this.#messenger.askForHiglight(val);
+    }
+
+    _removeUnselectable(output) {
+        this.#messenger.askForRemovingUnselectable(output);
     }
 }
 
