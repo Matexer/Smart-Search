@@ -34,6 +34,12 @@ export class SearchContainer extends Container {
         return $("#filter-value").val();
     }
 
+    setFilterPercentValue(value) {
+        console.log()
+        $("#filter-slider").val(value);
+        $("#filter-percent-value").text(value);
+    }
+
     _activateListeners() {
         $("#filter-slider").on("input", () => this._updateFilterValue());
         $("#pattern").on("input", () => this._updateFilterValue());

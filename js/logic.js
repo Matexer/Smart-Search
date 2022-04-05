@@ -61,6 +61,9 @@ class Logic {
             this.#settings = this.#defaultSettings;
             this._resetSettings();
         }
+
+        this.#popup.searchCont.setFilterPercentValue(
+            this.#settings.defaultMinSimilarity)
     }
 
     _initializeSearch() {
