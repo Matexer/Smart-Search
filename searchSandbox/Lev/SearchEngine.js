@@ -22,11 +22,9 @@ export class SearchEngine {
 
         const t0 = performance.now();
         let output = engine.lookFor(pattern, text, maxDistance);
-        const t1 = performance.now();
 
         let outputArray = [];
         let statsData = this._parseStatsData(output);
-        statsData.searchTime = Math.round(t1 - t0, 0);
     
         let maxVals = Math.min(this.#config.maxNumOfOutputs, output.size());
         for(var i = 0 ; i < maxVals; i++) {
@@ -41,8 +39,12 @@ export class SearchEngine {
 
         this._removeDuplicates(outputArray, text);
 
+        const t1 = performance.now();
+        statsData.searchTime = Math.round(t1 - t0, 0);
+
         let outputData = {output: outputArray,
                           stats: statsData};
+
         return outputData;
     }
 
@@ -109,14 +111,12 @@ export class SearchEngine {
             const ele1 = outputArray[i];
             let word1 = text.substr(ele1.index, ele1.length);
             for (let j = i + 1; j < outputArray.length; j++) {
-                const ele2 = outputArray[i];
+                const ele2 = outputArray[j];
                 let word2 = text.substr(ele2.index, ele2.length);
-                console.log(word1, word2);
                 if (word1 == word2) {
                     outputArray.splice(j, 1);
                     j--;
                 }
-                console.log(outputArray);
             }
         }
     }
