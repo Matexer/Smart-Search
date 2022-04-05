@@ -71,7 +71,8 @@ class Logic {
         this.#searchData.pattern = data.pattern;
 
         //TODO Uwzględnić dla różnych kosztów edycji 
-        this.#searchData.maxDistance = Math.max(data.pattern.length - data.minSimilarity, 0);
+        this.#searchData.maxDistance = Math.max(
+            data.pattern.length - data.minSimilarity, 0);
         this.#minSimilarity = data.minSimilarity;
 
         this.#messenger.askForTextContent();

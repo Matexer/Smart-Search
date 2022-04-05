@@ -35,7 +35,6 @@ export class SearchContainer extends Container {
     }
 
     setFilterPercentValue(value) {
-        console.log()
         $("#filter-slider").val(value);
         $("#filter-percent-value").text(value);
     }
