@@ -14,6 +14,12 @@
     content: " %";
 }
 
+.percent-form {
+    padding: 4px;
+    width: 10%;
+    margin-right: 5px;
+}
+
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */

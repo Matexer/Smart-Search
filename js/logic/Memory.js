@@ -2,6 +2,16 @@ export class Memory {
     saveLocal(data) {
         chrome.storage.local.set(data);
     }
+
+    saveSync(data) {
+        chrome.storage.sync.set(data);
+    }
+
+    async getSettings() {
+        let data = await this._getSync("settings");
+        if (this._isEmpty(data)) {return null}
+        else {return data.settings}
+    }
     
     async getStats() {
         let data = await this._getLocal("stats");
@@ -15,12 +25,15 @@ export class Memory {
         else {return null}
     }
 
-    _saveSync(data) {
-        chrome.storage.sync.set(data);
-    }
-
     _getSync(type) {
-
+        return new Promise((resolve, reject) => {
+            chrome.storage.sync.get(type, (items) => {
+              if (chrome.runtime.lastError) {
+                return reject(chrome.runtime.lastError);
+              }
+              resolve(items);
+            });
+          });
     }
     
     _getLocal(type) {

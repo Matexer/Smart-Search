@@ -9,19 +9,19 @@ class Logic {
     #memory = new Memory();
 
     #searchData = {};
-    #searchConfig = {deletionCost: 1,
+    #minSimilarity = null;
+
+    #settings = {};
+    #defaultSettings = {capitalLetters: true,
+        maxNumOfOutputs: 10,
+        defaultMinSimilarity: 80,
+        deletionCost: 1,
         insertionCost: 1,
         swapCost: 1,
-        purifyRange: 5,
-        fixRange: 3,
-        encoding: 16,
-        maxNumOfOutputs: 10,
-        // muliThreading = false;
-        // multiThreadingMinComplexity = 100;
-        // maxNumOfThreads = 12;
-        }
-
-    #minSimilarity = null;
+        purifyRange: 100,
+        fixRange: 30,
+        utfEncoding: 16
+    }
 
     constructor() {
         this.initialize();
@@ -31,19 +31,32 @@ class Logic {
         await this.#popup.initialize();
 
         this._activateListeners();
-        this._bindSearchBtn();
+        this._bindButtons();
         this._loadData();
     }
 
-    _bindSearchBtn() {
+    _bindButtons() {
         $(this.#popup.searchCont.searchBtnId).click(() => this._initializeSearch());
         $(this.#popup.statsCont.resetBtnId).click(() => this._resetStats());
+        $(this.#popup.settingsCont.saveBtnId).click(() => this._updateSettings());
+        $(this.#popup.settingsCont.resetSettingsBtnId).click(() => this._resetSettings());
     }
 
     async _loadData() {
-        let stats = await this.#memory.getStats();
+        let [stats, settings] = await Promise.all([this.#memory.getStats(),
+            this.#memory.getSettings()]);
+
         if (stats) {
             this._showStats(stats);
+        }
+
+        if (settings) {
+            this.#settings = settings;
+            this.#popup.settingsCont.insertSettings(settings);
+        }
+        else {
+            this.#settings = this.#defaultSettings;
+            this._resetSettings();
         }
     }
 
@@ -81,11 +94,39 @@ class Logic {
         let textContent = this.#messenger.handleMessage(message);
         if (textContent) {
             this.#searchData.text = textContent;
-            let data = {searchData: this.#searchData,
-                        config: this.#searchConfig};
-
-            this.#messenger.sendSearchData(data);
+            this._search();
         }
+    }
+
+    _search() {
+        let purifyRange = Math.round(
+            this.#settings.purifyRange * this.#searchData.pattern.length / 100, 0);
+        let fixRange = Math.round(
+            this.#settings.fixRange * this.#searchData.pattern.length / 100, 0);
+
+        let searchConfig = {deletionCost: parseInt(this.#settings.deletionCost),
+            insertionCost: parseInt(this.#settings.insertionCost),
+            swapCost: parseInt(this.#settings.swapCost),
+            purifyRange: purifyRange,
+            fixRange: fixRange,
+            encoding: this.#settings.utfEncoding,
+            maxNumOfOutputs: parseInt(this.#settings.maxNumOfOutputs),
+            // muliThreading = false;
+            // multiThreadingMinComplexity = 100;
+            // maxNumOfThreads = 12;
+        }
+
+        var searchData = this.#searchData;
+        if (!this.#settings.capitalLetters) {
+            searchData = {pattern: this.#searchData.pattern.toLowerCase(),
+                          text: this.#searchData.text.toLowerCase(),
+                          maxDistance: this.#searchData.maxDistance}
+        }
+
+        let data = {searchData: searchData,
+                    config: searchConfig};
+
+        this.#messenger.sendSearchData(data);
     }
 
     _parseOutput(output) {
@@ -157,6 +198,20 @@ class Logic {
 
         this.#popup.statsCont.showTotalSearchStats(totalStats);
         this.#memory.saveLocal(data);
+    }
+
+    _updateSettings() {
+        let settings = this.#popup.settingsCont.getSettings();
+        this.#settings = settings;
+        let data = {settings: settings};
+        this.#memory.saveSync(data);
+    }
+
+    _resetSettings() {
+        let data = {settings: this.#defaultSettings};
+        this.#settings = this.#defaultSettings;
+        this.#memory.saveSync(data);
+        this.#popup.settingsCont.insertSettings(this.#defaultSettings);
     }
 }
 

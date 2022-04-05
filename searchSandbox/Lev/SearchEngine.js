@@ -45,7 +45,7 @@ export class SearchEngine {
     }
 
     setConfig(config) {
-        this.config = config;
+        this.#config = config;
     }
 
     _getSizeTVal(pattern) {
