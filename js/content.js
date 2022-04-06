@@ -23,8 +23,9 @@ $(function() {
     function countMarks(text) {
         let element = "tmp-mark";
 
-        func = function () {
-            occurences = $("body").find("tmp-mark").length;
+        func = function(num) {
+            let count = ([...getTextContent().matchAll(text)] || []).length;
+            occurences = Math.min(num, count);
         };
         
         _mark(text, element, func);
