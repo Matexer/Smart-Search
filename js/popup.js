@@ -13,10 +13,13 @@ export class Popup {
     }
 
     async initialize() {
-        await this._renderAll();
-        
+        let finished = await this._renderAll()
+        .then(this.loadLanguage());
+
         this._bindHeaderIcons();
         this._showSearchContainer();
+
+        return finished;
     }
 
     getSearchData() {
@@ -34,6 +37,20 @@ export class Popup {
             this.statsCont.render("#content"),
             this.settingsCont.render("#content")
         ]);
+    }
+
+    async loadLanguage() {        
+        let module = await import('../lang/pl.js').then(true);
+        let lang = module.lang;
+        this.statsCont.lang = {
+            "lang-occurences": lang["lang-occurences"],
+            "lang-Levenshtein-distance": lang["lang-Levenshtein-distance"]};
+
+        $(document).ready(function() {
+            for (const word in lang) {
+                $("." + word).text(lang[word]);
+            }
+        })
     }
 
     _bindHeaderIcons() {

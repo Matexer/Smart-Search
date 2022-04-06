@@ -1,48 +1,48 @@
 <div id="stats-container" class="rounded noselect" style="display: none">
 
     <div id="last-search-stats-container" class="container border-bottom">
-        <span>Dla ostatniego wyszukiwania</span><br>
+        <span class="lang-for-last-search">For last search</span><br>
 
         <span id="stats-pattern" class="list-group-item text-truncate search-output rounded">
         </span>
 
-        <span>Długość wzorca: </span>
+        <span class="lang-pattern-length">Pattern length: </span>
         <span id="stats-pattern-length" class="badge stats-value-badge"></span><br>
 
-        <span>Długość tekstu: </span>
+        <span class="lang-text-length">Text length: </span>
         <span id="stats-text-length" class="badge stats-value-badge"></span><br>
 
-        <span>Minimalne podobieństwo: </span>
-        <span id="stats-min-similarity" class="badge stats-value-badge"></span><br>
+        <span class="lang-max-distance">Max distance: </span>
+        <span id="stats-max-distance" class="badge stats-value-badge"></span><br>
 
-        <span>Czas poszukiwań: </span>
+        <span class="lang-search-time">Search time: </span>
         <span id="stats-search-time" class="badge stats-value-badge"></span><br>
 
-        <span>Liczba odnalezionych dopasowań: </span>
+        <span class="lang-num-of-outputs">Number of outputs: </span>
         <span id="stats-numOfOutputs" class="badge stats-value-badge"></span><br>
 
         <br>
 
-        <span>Histogram dopasowań</span>
+        <span class="lang-outputs-histogram">Outputs histogram</span>
         <canvas id="barChart" width="300" height="150"></canvas>
     </div>
 
     <div id="all-search-stats-container" class="container border-bottom">
-        <span>Dla wszystkich wyszukiwań </span><br>
+        <span class="lang-for-all-searchs">For all searchs</span><br>
         <br>
 
-        <span>Szukanych wzorców: </span>
-        <span id="stats-numOfPatterns" class="badge stats-value-badge">4</span><br>
+        <span class="lang-searched-patterns">Searched patterns</span>
+        <span id="stats-numOfPatterns" class="badge stats-value-badge">0</span><br>
 
-        <span>Odnalezionych dopasowań: </span>
-        <span id="stats-totalNumOfOutputs" class="badge stats-value-badge">345</span><br>
+        <span class="lang-founded-outputs">Founded outputs: </span>
+        <span id="stats-totalNumOfOutputs" class="badge stats-value-badge">0</span><br>
 
-        <span>Przeanalizowanych znaków: </span>
-        <span id="stats-numOfAnalizedSigns" class="badge stats-value-badge">12455</span><br>
+        <span class="lang-analized-signs">Analized signs: </span>
+        <span id="stats-numOfAnalizedSigns" class="badge stats-value-badge">0</span><br>
     </div>
 
     <div style="width: 100%; background-color: darkorange; margin-top: 30px; padding: 5px;" class="text-center">
-        <button id="reset-stats-btn" type="button" class="btn btn-danger">Resetuj statystyki</button>
+        <button id="reset-stats-btn" type="button" class="lang-reset-stats-btn btn btn-danger">Reset stats</button>
     </div>
     </div>
 </div>

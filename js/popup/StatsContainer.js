@@ -7,12 +7,13 @@ export class StatsContainer extends Container {
     _chart = null;
 
     resetBtnId = "#reset-stats-btn";
+    lang;
 
     showLastSearchStats(data) {
         $('#stats-pattern').text(data.pattern);
         $('#stats-pattern-length').text(data.pattern.length);
         $('#stats-text-length').text(data.textLength);
-        $('#stats-min-similarity').text(data.minSimilarity);
+        $('#stats-max-distance').text(data.maxDistance);
         $('#stats-search-time').text(data.searchTime);
         $('#stats-numOfOutputs').text(data.numOfOutputs);
 
@@ -70,7 +71,7 @@ export class StatsContainer extends Container {
                     yAxes: {
                         title: {
                             display: true,
-                            text: "Wystąpienia",
+                            text: this.lang["lang-occurences"],
                             font: {
                                 size: 15
                             }
@@ -82,7 +83,7 @@ export class StatsContainer extends Container {
                     xAxes: {
                         title: {
                             display: true,
-                            text: "Odległość Levenshteina",
+                            text: this.lang["lang-Levenshtein-distance"],
                             font: {
                                 size: 15
                             }

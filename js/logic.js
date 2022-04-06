@@ -9,13 +9,12 @@ class Logic {
     #memory = new Memory();
 
     #searchData = {};
-    #minSimilarity = null;
 
     #settings = {};
     #defaultSettings = {
         capitalLetters: true,
         maxNumOfOutputs: 10,
-        defaultMinSimilarity: 80,
+        defaultMaxDistance: 80,
         deletionCost: 1,
         insertionCost: 1,
         swapCost: 1,
@@ -29,7 +28,7 @@ class Logic {
     }
 
     async initialize() {
-        await this.#popup.initialize();
+        await this.#popup.initialize()
 
         this._activateListeners();
         this._bindButtons();
@@ -63,7 +62,7 @@ class Logic {
         }
 
         this.#popup.searchCont.setFilterPercentValue(
-            this.#settings.defaultMinSimilarity)
+            this.#settings.defaultMaxDistance)
     }
 
     _initializeSearch() {
@@ -71,9 +70,7 @@ class Logic {
         this.#searchData.pattern = data.pattern;
 
         //TODO Uwzględnić dla różnych kosztów edycji 
-        this.#searchData.maxDistance = Math.max(
-            data.pattern.length - data.minSimilarity, 0);
-        this.#minSimilarity = data.minSimilarity;
+        this.#searchData.maxDistance = data.maxDistance;
 
         this.#messenger.askForTextContent();
     }
@@ -90,6 +87,7 @@ class Logic {
     }
 
     _handleMessage(msg) {
+        console.log("egg");
         if (msg.type == "TextContent") {
             this.#searchData.text = msg.content;
             this._search();
@@ -160,7 +158,7 @@ class Logic {
 
         let lastData = {pattern: this.#searchData.pattern,
                         textLength: this.#searchData.text.length,
-                        minSimilarity: this.#minSimilarity,
+                        maxDistance: this.#searchData.maxDistance,
                         searchTime: newStats.searchTime,
                         numOfOutputs: newStats.numOfOutputs,
                         histData: histData};

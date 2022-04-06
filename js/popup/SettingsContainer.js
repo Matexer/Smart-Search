@@ -11,7 +11,7 @@ export class SettingsContainer extends Container {
     getSettings() {
         return {capitalLetters: $('#capital-letters-chbox').prop('checked'),
         maxNumOfOutputs: $('#max-num-of-outputs').val(),
-        defaultMinSimilarity: $('#def-min-similarity').val(),
+        defaultMaxDistance: $('#def-max-distance').val(),
         deletionCost: $('#deletion-cost').val(),
         insertionCost: $('#insertion-cost').val(),
         swapCost: $('#swap-cost').val(),
@@ -24,7 +24,7 @@ export class SettingsContainer extends Container {
     insertSettings(settings) {
         $('#capital-letters-chbox').prop('checked', settings.capitalLetters),
         $('#max-num-of-outputs').val(settings.maxNumOfOutputs),
-        $('#def-min-similarity').val(settings.defaultMinSimilarity),
+        $('#def-max-distance').val(settings.defaultMaxDistance),
         $('#deletion-cost').val(settings.deletionCost),
         $('#insertion-cost').val(settings.insertionCost),
         $('#swap-cost').val(settings.swapCost),
