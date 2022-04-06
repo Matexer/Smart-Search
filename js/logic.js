@@ -80,36 +80,29 @@ class Logic {
 
     _activateListeners() {
         window.addEventListener("message",
-            event => this._handleMessageEvent(event), false);
+            event => this._handleMessage(event.data), false);
 
         chrome.runtime.onMessage.addListener(
             (message, sender, sendResponse) => {
-                this._handleChromeMessage(message);
+                this._handleMessage(message);
                 sendResponse();
         })
     }
 
-    //From Search - receiving SearchOutput
-    _handleMessageEvent(event) {
-        let msg = this.#messenger.handleMessage(event.data);
-        if (!msg) return;
-
-        let output = this._parseOutput(msg.content.output);
-        this._removeUnselectable(output);
-        this._updateStats(msg.content.stats);
-    }
-
-    //From content - receiving TextContent
-    _handleChromeMessage(msg) {
+    _handleMessage(msg) {
         if (msg.type == "TextContent") {
             this.#searchData.text = msg.content;
             this._search();
         }
         else if (msg.type == "ClearSearchOutput") {
             this.#popup.searchCont.showOutput(msg.content);
-
             $(this.#popup.searchCont.outputId).click(
                 output => this._higlight(output.currentTarget));
+        }
+        else if (msg.type == "SearchOutput") {
+            let output = this._parseOutput(msg.content.output);
+            this._removeUnselectable(output);
+            this._updateStats(msg.content.stats);
         }
     }
 

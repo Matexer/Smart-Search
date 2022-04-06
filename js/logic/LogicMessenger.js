@@ -1,17 +1,6 @@
 export class LogicMessenger {
     #searchSandbox = document.querySelector("iframe").contentWindow;
 
-    handleMessage(message) {
-        if (message.type == "TextContent"
-            || message.type == "SearchOutput"
-            || message.type == "ClearSearchOutput") {
-            return message;
-        }
-        else {
-            return null;
-        }
-    }
-
     askForTextContent() {
         chrome.tabs.query(
             {active: true, currentWindow: true}, (tabs) => {

@@ -1,29 +1,24 @@
 //REF: https://jsfiddle.net/julmot/973gdh8g/
 
 $(function() {
-    var $content = $("body"),
-    instance,
-    $results,
-    currentClass = "current",
-    offsetTop = 300,
-    currentIndex = 0;
+    var instance;
+    var $results;
     
     function getTextContent() {
         return document.body.innerText;
     }
     
-    function jumpTo() {
-        if ($results.length) {
-          var position,
-            $current = $results.eq(currentIndex);
-          $results.removeClass(currentClass);
-          if ($current.length) {
-            $current.addClass(currentClass);
-            position = $current.offset().top - offsetTop;
+    function jumpTo(index) {
+        if ($results.length < 1) {return;}
+
+        $current = $results.eq(index);
+        $results.removeClass("selected-mark");
+        if ($current.length) {
+            $current.addClass("selected-mark");
+            let position = $current.offset().top - 300;
             window.scrollTo(0, position);
-          }
         }
-      }
+    }
 
     function mark(text) {
         if (instance) {instance.unmark();}
@@ -36,9 +31,8 @@ $(function() {
             "ignoreJoiners": true,
             "acrossElements": true,
             done: function() {
-                $results = $content.find("mark");
-                currentIndex = 0;
-                jumpTo();
+                $results = $("body").find("mark");
+                jumpTo(0);
             }
         });
     }
