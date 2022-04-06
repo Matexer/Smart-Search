@@ -227,6 +227,8 @@ class Logic {
             this.#popup.searchCont.outputValId).text();
         let index = parseInt($(output).find(
             this.#popup.searchCont.outputOccurenceId).text()) - 1;
+        
+        if (index == NaN) {index = 0};
         this.#messenger.askForHiglight(text, index);
     }
 
