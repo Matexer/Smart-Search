@@ -7,7 +7,7 @@ export class StatsContainer extends Container {
     _chart = null;
 
     resetBtnId = "#reset-stats-btn";
-    lang = {text: {}};
+    langText;
 
     showLastSearchStats(data) {
         $('#stats-pattern').text(data.pattern);
@@ -24,6 +24,14 @@ export class StatsContainer extends Container {
         $('#stats-numOfPatterns').text(data.numOfPatterns);
         $('#stats-totalNumOfOutputs').text(data.numOfOutputs);
         $('#stats-numOfAnalizedSigns').text(data.analizedSigns);
+    }
+
+    reloadChartLabels() {
+        if (this._chart) {
+            let xs = this._chart.data.labels;
+            let ys = this._chart.data.datasets[0].data;
+            this._updateChart(xs, ys);
+        }
     }
 
     _showOnChart(histData) {
@@ -71,7 +79,7 @@ export class StatsContainer extends Container {
                     yAxes: {
                         title: {
                             display: true,
-                            text: this.lang.text["lang-occurences"],
+                            text: this.langText["lang-occurences"],
                             font: {
                                 size: 15
                             }
@@ -83,7 +91,7 @@ export class StatsContainer extends Container {
                     xAxes: {
                         title: {
                             display: true,
-                            text: this.lang.text["lang-Levenshtein-distance"],
+                            text: this.langText["lang-Levenshtein-distance"],
                             font: {
                                 size: 15
                             }

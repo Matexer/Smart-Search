@@ -49,10 +49,6 @@ class Logic {
             this.#memory.getSettings()
         ]);
 
-        if (stats) {
-            this._showStats(stats);
-        }
-
         if (settings) {
             this.#settings = settings;
             this.#popup.settingsCont.insertSettings(settings);
@@ -62,7 +58,12 @@ class Logic {
             this._resetSettings();
         }
 
-        this.#popup.loadLanguage(this.#settings.language);
+        await this.#popup.loadLanguage(this.#settings.language);
+
+        if (stats) {
+            this._showStats(stats);
+        }
+
         this.#popup.searchCont.setFilterPercentValue(
             this.#settings.defaultMaxDistance)
     }
@@ -202,20 +203,22 @@ class Logic {
         this.#memory.saveLocal(data);
     }
 
-    _updateSettings() {
+    async _updateSettings() {
         let settings = this.#popup.settingsCont.getSettings();
         this.#settings = settings;
         let data = {settings: settings};
         this.#memory.saveSync(data);
-        this.#popup.loadLanguage(this.#settings.language);
+        await this.#popup.loadLanguage(this.#settings.language);
+        this.#popup.statsCont.reloadChartLabels();
     }
 
-    _resetSettings() {
+    async _resetSettings() {
         let data = {settings: this.#defaultSettings};
         this.#settings = this.#defaultSettings;
         this.#memory.saveSync(data);
         this.#popup.settingsCont.insertSettings(this.#defaultSettings);
-        this.#popup.loadLanguage(this.#settings.language);
+        await this.#popup.loadLanguage(this.#settings.language);
+        this.#popup.statsCont.reloadChartLabels();
     }
 
     _higlight(output) {

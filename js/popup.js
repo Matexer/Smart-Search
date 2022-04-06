@@ -41,9 +41,6 @@ export class Popup {
     async loadLanguage(language) {        
         let module = await import('../lang/' + language + '.js');
         let lang = module.lang;
-        this.statsCont.lang.text = {
-            "lang-occurences": lang.text["lang-occurences"],
-            "lang-Levenshtein-distance": lang.text["lang-Levenshtein-distance"]};
         
         for (const ele in lang.text) {
             $("." + ele).text(lang.text[ele]);
@@ -52,6 +49,12 @@ export class Popup {
         for (const ele in lang.placeholder) {
             $("." + ele).attr("placeholder", lang.placeholder[ele]);
         }
+
+        this.statsCont.langText = {
+            "lang-occurences": lang.text["lang-occurences"],
+            "lang-Levenshtein-distance": lang.text["lang-Levenshtein-distance"]};
+
+        this.statsCont.reloadChartLabels();
     }
 
     _bindHeaderIcons() {
