@@ -26,8 +26,8 @@ export class SearchEngine {
         let outputArray = [];
         let statsData = this._parseStatsData(output);
     
-        let maxVals = Math.min(this.#config.maxNumOfOutputs, output.size());
-        for(var i = 0 ; i < maxVals; i++) {
+        let outputSize = output.size()
+        for(var i = 0 ; i < outputSize; i++) {
             outputArray.push({
                 index: output.get(i).index,
                 length: output.get(i).length,
@@ -38,6 +38,9 @@ export class SearchEngine {
         output.delete();
 
         this._removeDuplicates(outputArray, text);
+
+        let maxVals = Math.min(this.#config.maxNumOfOutputs, outputSize);
+        outputArray.splice(maxVals);
 
         const t1 = performance.now();
         statsData.searchTime = Math.round(t1 - t0, 0);

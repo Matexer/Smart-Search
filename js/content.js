@@ -24,7 +24,14 @@ $(function() {
         let element = "tmp-mark";
 
         func = function(num) {
-            let count = ([...getTextContent().matchAll(text)] || []).length;
+            let count;
+            if(text.length == 1) {
+                count = num;  
+            }
+            else {
+                count = ([...getTextContent().matchAll(text)] || []).length;
+            }
+
             occurences = Math.min(num, count);
         };
         
