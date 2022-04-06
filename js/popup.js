@@ -24,7 +24,7 @@ export class Popup {
 
     getSearchData() {
         let data = {pattern: this.searchCont.getPattern(),
-                       minSimilarity: this.searchCont.getMinSimilarity()
+                    maxDistance: this.searchCont.getMaxDistance()
         }
         return data;
     }

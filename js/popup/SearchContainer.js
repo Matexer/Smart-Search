@@ -31,7 +31,7 @@ export class SearchContainer extends Container {
         return $("#pattern").val();
     }
 
-    getMinSimilarity() {
+    getMaxDistance() {
         return $("#filter-value").val();
     }
 

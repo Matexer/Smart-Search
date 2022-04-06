@@ -66,12 +66,7 @@ class Logic {
     }
 
     _initializeSearch() {
-        let data = this.#popup.getSearchData();
-        this.#searchData.pattern = data.pattern;
-
-        //TODO Uwzględnić dla różnych kosztów edycji 
-        this.#searchData.maxDistance = data.maxDistance;
-
+        this.#searchData = this.#popup.getSearchData();
         this.#messenger.askForTextContent();
     }
 
