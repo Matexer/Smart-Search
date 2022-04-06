@@ -27,6 +27,9 @@ export var lang = {
     "lang-analized-signs": "Przeanalizowanych znaków: ",
     "lang-reset-stats-btn": "Resetuj statystyki",
     "lang-occurences": "Wystąpienia",
-    "lang-Levenshtein-distance": "Odległość Levenshteina"
+    "lang-Levenshtein-distance": "Odległość Levenshteina",
 
+    //Wyszukiwanie
+    "lang-search-btn": "Szukaj",
+    "lang-max-distance-filtration": "Maksymalna odległość - filtrowanie",
 }
