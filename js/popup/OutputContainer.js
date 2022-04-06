@@ -12,7 +12,9 @@ export class OutputContainer extends Container {
     add(text, distance, occurences) {
         this._renderOutput(text, distance, occurences);
         let $element = $("#output-list").find(".search-output").last();
-        this._bindButtons($element);
+        if (occurences > 1) {
+            this._bindButtons($element);
+        }
     }
 
     clear() {
@@ -20,13 +22,9 @@ export class OutputContainer extends Container {
     }
 
     _renderOutput(text, distance, occurences) {
-        $("#output-list").append('\
-        <li class="list-group-item search-output"> \
-        <div class="d-flex">\
-            <span class="badge output-badge"> ' + distance + ' </span>\
-            <div class="text-truncate">\
-                <span class="output-val">' + text + '</span>\
-            </div>\
+        let occPart = "";
+        if (occurences > 1) {
+            occPart = '\
             <div class="d-flex" style="margin-left: auto;">\
                 <div class="add">\
                     <span>+</span>\
@@ -37,8 +35,17 @@ export class OutputContainer extends Container {
                     <span class="output-total-occurences"> ' + occurences + '</span>\
                     <span>-</span>\
                 </div>\
-            </div>\
-        </div>\
+            </div>'
+        }
+
+        $("#output-list").append('\
+        <li class="list-group-item search-output"> \
+        <div class="d-flex">\
+            <span class="badge output-badge"> ' + distance + ' </span>\
+            <div class="text-truncate">\
+                <span class="output-val">' + text + '</span>\
+            </div>' + occPart +
+        '</div>\
     </li>');
     }
 
