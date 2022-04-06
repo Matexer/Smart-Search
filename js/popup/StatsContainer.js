@@ -7,7 +7,7 @@ export class StatsContainer extends Container {
     _chart = null;
 
     resetBtnId = "#reset-stats-btn";
-    lang;
+    lang = {text: {}};
 
     showLastSearchStats(data) {
         $('#stats-pattern').text(data.pattern);
@@ -71,7 +71,7 @@ export class StatsContainer extends Container {
                     yAxes: {
                         title: {
                             display: true,
-                            text: this.lang["lang-occurences"],
+                            text: this.lang.text["lang-occurences"],
                             font: {
                                 size: 15
                             }
@@ -83,7 +83,7 @@ export class StatsContainer extends Container {
                     xAxes: {
                         title: {
                             display: true,
-                            text: this.lang["lang-Levenshtein-distance"],
+                            text: this.lang.text["lang-Levenshtein-distance"],
                             font: {
                                 size: 15
                             }

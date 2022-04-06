@@ -1,5 +1,7 @@
 export var lang = {
+    text: {
     //Ustawienia
+    "lang-language": "Preferencje językowe: ",
     "lang-cap-letters": "Uwzględniaj wielkość liter",
     "lang-max-num-of-outputs": "Maksymalna liczba wyników na liście",
     "lang-def-max-distance": "Domyślne minimalne podobieństwo",
@@ -31,5 +33,10 @@ export var lang = {
 
     //Wyszukiwanie
     "lang-search-btn": "Szukaj",
-    "lang-max-distance-filtration": "Maksymalna odległość - filtrowanie",
+    "lang-max-distance-filtration": "Maksymalna odległość - filtrowanie"
+    },
+
+    placeholder: {
+    "lang-pattern-placeholder": "Szukana fraza..."
+    }
 }

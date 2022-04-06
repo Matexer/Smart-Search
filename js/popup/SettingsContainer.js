@@ -9,7 +9,9 @@ export class SettingsContainer extends Container {
     resetSettingsBtnId = "#reset-settings-btn"
 
     getSettings() {
-        return {capitalLetters: $('#capital-letters-chbox').prop('checked'),
+        return {
+        language: $('#language').val(),
+        capitalLetters: $('#capital-letters-chbox').prop('checked'),
         maxNumOfOutputs: $('#max-num-of-outputs').val(),
         defaultMaxDistance: $('#def-max-distance').val(),
         deletionCost: $('#deletion-cost').val(),
@@ -22,6 +24,7 @@ export class SettingsContainer extends Container {
     }
 
     insertSettings(settings) {
+        $('#language').val(settings.language),
         $('#capital-letters-chbox').prop('checked', settings.capitalLetters),
         $('#max-num-of-outputs').val(settings.maxNumOfOutputs),
         $('#def-max-distance').val(settings.defaultMaxDistance),

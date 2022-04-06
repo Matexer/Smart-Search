@@ -13,8 +13,7 @@ export class Popup {
     }
 
     async initialize() {
-        let finished = await this._renderAll()
-        .then(this.loadLanguage());
+        let finished = await this._renderAll();
 
         this._bindHeaderIcons();
         this._showSearchContainer();
@@ -39,18 +38,20 @@ export class Popup {
         ]);
     }
 
-    async loadLanguage() {        
-        let module = await import('../lang/pl.js').then(true);
+    async loadLanguage(language) {        
+        let module = await import('../lang/' + language + '.js');
         let lang = module.lang;
-        this.statsCont.lang = {
-            "lang-occurences": lang["lang-occurences"],
-            "lang-Levenshtein-distance": lang["lang-Levenshtein-distance"]};
+        this.statsCont.lang.text = {
+            "lang-occurences": lang.text["lang-occurences"],
+            "lang-Levenshtein-distance": lang.text["lang-Levenshtein-distance"]};
+        
+        for (const ele in lang.text) {
+            $("." + ele).text(lang.text[ele]);
+        }
 
-        $(document).ready(function() {
-            for (const word in lang) {
-                $("." + word).text(lang[word]);
-            }
-        })
+        for (const ele in lang.placeholder) {
+            $("." + ele).attr("placeholder", lang.placeholder[ele]);
+        }
     }
 
     _bindHeaderIcons() {

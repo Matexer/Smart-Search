@@ -12,6 +12,7 @@ class Logic {
 
     #settings = {};
     #defaultSettings = {
+        language: 'en',
         capitalLetters: true,
         maxNumOfOutputs: 10,
         defaultMaxDistance: 80,
@@ -61,6 +62,7 @@ class Logic {
             this._resetSettings();
         }
 
+        this.#popup.loadLanguage(this.#settings.language);
         this.#popup.searchCont.setFilterPercentValue(
             this.#settings.defaultMaxDistance)
     }
@@ -205,6 +207,7 @@ class Logic {
         this.#settings = settings;
         let data = {settings: settings};
         this.#memory.saveSync(data);
+        this.#popup.loadLanguage(this.#settings.language);
     }
 
     _resetSettings() {
@@ -212,6 +215,7 @@ class Logic {
         this.#settings = this.#defaultSettings;
         this.#memory.saveSync(data);
         this.#popup.settingsCont.insertSettings(this.#defaultSettings);
+        this.#popup.loadLanguage(this.#settings.language);
     }
 
     _higlight(output) {
