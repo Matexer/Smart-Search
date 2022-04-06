@@ -11,7 +11,7 @@ $(function() {
     function jumpTo(index) {
         let $results = $("body").find("mark");
         let $current = $results.eq(index);
-        console.log($results);
+
         $results.removeClass("selected-mark");
         if ($current.length) {
             $current.addClass("selected-mark");
@@ -62,7 +62,7 @@ $(function() {
         for (let i = 0; i < output.length; i++) {
             let text = output[i].text;
             let occurences = countMarks(text);
-            //console.log($("body:contains(" + text + ")"));
+
             if (occurences < 1) {
                 output.splice(i, 1);
                 i--;

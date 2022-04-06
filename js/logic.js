@@ -100,7 +100,6 @@ class Logic {
             this._updateStats(msg.content.stats);
         }
         else if (msg.type == "ClearSearchOutput") {
-            console.log(msg.content);
             this.#popup.searchCont.showOutput(msg.content);
             $(this.#popup.searchCont.outputId).click(
                 output => this._higlight(output.currentTarget));
