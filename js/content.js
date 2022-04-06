@@ -25,13 +25,7 @@ $(function() {
 
         func = function(num) {
             let count;
-            if(text.length == 1) {
-                count = num;  
-            }
-            else {
-                count = ([...getTextContent().matchAll(text)] || []).length;
-            }
-
+            count = getTextContent().split(text).length - 1;
             occurences = Math.min(num, count);
         };
         
