@@ -87,7 +87,6 @@ class Logic {
     }
 
     _handleMessage(msg) {
-        console.log("egg");
         if (msg.type == "TextContent") {
             this.#searchData.text = msg.content;
             this._search();
