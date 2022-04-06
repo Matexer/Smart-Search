@@ -9,8 +9,8 @@ export class LogicMessenger {
         )
     }
 
-    askForHiglight(text) {
-        let message = {type: "HiglightText", content: text};
+    askForHiglight(text, index) {
+        let message = {type: "HiglightText", content: {text: text, index: index}};
         chrome.tabs.query(
             {active: true, currentWindow: true}, (tabs) => {
                 chrome.tabs.sendMessage(tabs[0].id, message).catch(err => {});
@@ -18,8 +18,8 @@ export class LogicMessenger {
         )
     }
 
-    askForRemovingUnselectable(output) {
-        let message = {type: "RemoveUnselectable", content: output};
+    askForSettingOccurences(output) {
+        let message = {type: "SetOccurences", content: output};
         chrome.tabs.query(
             {active: true, currentWindow: true}, (tabs) => {
                 chrome.tabs.sendMessage(tabs[0].id, message).catch(err => {});

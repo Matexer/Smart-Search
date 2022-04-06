@@ -10,6 +10,7 @@ export class SearchContainer extends Container {
     searchBtnId = "#search-btn";
     outputId = this._outputCont.outputId;
     outputValId = this._outputCont.outputValId;
+    outputOccurenceId = this._outputCont.outputOccurenceId;
 
     async render(rootID) {
         return await super.render(rootID)
@@ -22,7 +23,7 @@ export class SearchContainer extends Container {
         this._outputCont.show();
 
         for (const output of outputData) {
-            this._outputCont.add(output.text, output.distance);
+            this._outputCont.add(output.text, output.distance, output.occurences);
         }
     }
 

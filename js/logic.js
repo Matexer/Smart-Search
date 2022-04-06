@@ -94,15 +94,16 @@ class Logic {
             this.#searchData.text = msg.content;
             this._search();
         }
+        else if (msg.type == "SearchOutput") {
+            let output = this._parseOutput(msg.content.output);
+            this._setOccurences(output);
+            this._updateStats(msg.content.stats);
+        }
         else if (msg.type == "ClearSearchOutput") {
+            console.log(msg.content);
             this.#popup.searchCont.showOutput(msg.content);
             $(this.#popup.searchCont.outputId).click(
                 output => this._higlight(output.currentTarget));
-        }
-        else if (msg.type == "SearchOutput") {
-            let output = this._parseOutput(msg.content.output);
-            this._removeUnselectable(output);
-            this._updateStats(msg.content.stats);
         }
     }
 
@@ -223,12 +224,15 @@ class Logic {
     }
 
     _higlight(output) {
-        let val = $(output).find(this.#popup.searchCont.outputValId).text();
-        this.#messenger.askForHiglight(val);
+        let text = $(output).find(
+            this.#popup.searchCont.outputValId).text();
+        let index = parseInt($(output).find(
+            this.#popup.searchCont.outputOccurenceId).text()) - 1;
+        this.#messenger.askForHiglight(text, index);
     }
 
-    _removeUnselectable(output) {
-        this.#messenger.askForRemovingUnselectable(output);
+    _setOccurences(output) {
+        this.#messenger.askForSettingOccurences(output);
     }
 }
 

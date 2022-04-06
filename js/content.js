@@ -2,16 +2,16 @@
 
 $(function() {
     var instance;
-    var $results;
+    var occurences;
     
     function getTextContent() {
         return document.body.innerText;
     }
     
     function jumpTo(index) {
-        if ($results.length < 1) {return;}
-
-        $current = $results.eq(index);
+        let $results = $("body").find("mark");
+        let $current = $results.eq(index);
+        console.log($results);
         $results.removeClass("selected-mark");
         if ($current.length) {
             $current.addClass("selected-mark");
@@ -20,29 +20,55 @@ $(function() {
         }
     }
 
-    function mark(text) {
+    function countMarks(text) {
+        let element = "tmp-mark";
+
+        func = function () {
+            occurences = $("body").find("tmp-mark").length;
+        };
+        
+        _mark(text, element, func);
+        if (instance) {instance.unmark();}
+
+        return occurences;
+    }
+
+    function mark(text, index=0) {
+        let element = "mark";
+
+        func = function () {
+            jumpTo(index);
+        };
+
+        _mark(text, element, func);
+    }
+
+    function _mark(text, element, func) {
         if (instance) {instance.unmark();}
         instance = new Mark(document.body);
     
         instance.mark(text, {
+            "element": element,
             "separateWordSearch": false,
             "caseSensitive": true,
             "diacritics": false,
             "ignoreJoiners": true,
             "acrossElements": true,
-            done: function() {
-                $results = $("body").find("mark");
-                jumpTo(0);
-            }
+            done: func
         });
     }
 
-    function removeUnselectable(output) {
+    function setOccurences(output) {
         for (let i = 0; i < output.length; i++) {
-            const text = output[i].text;
-            if ($("body:contains(" + text + ")").length < 1) {
+            let text = output[i].text;
+            let occurences = countMarks(text);
+            //console.log($("body:contains(" + text + ")"));
+            if (occurences < 1) {
                 output.splice(i, 1);
                 i--;
+            }
+            else {
+                output[i].occurences = occurences;
             }
         }
         return output
@@ -55,12 +81,13 @@ $(function() {
                 content: getTextContent()}).catch(err => {});
         }
         else if (message.type == "HiglightText") {
-            mark(message.content);
+            let cont = message.content;
+            mark(cont.text, cont.index);
         }
-        else if (message.type == "RemoveUnselectable") {
+        else if (message.type == "SetOccurences") {
             chrome.runtime.sendMessage({
                 type: "ClearSearchOutput",
-                content: removeUnselectable(message.content)}).catch(err => {});
+                content: setOccurences(message.content)}).catch(err => {});
         }
     
         sendResponse();
