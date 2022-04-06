@@ -8,8 +8,36 @@
 }
 
 .output-badge {
+    align-items: center;
     color: black; 
     background-color: orange;
+}
+
+.output-occurence {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.add {
+    margin-left: 2px;
+    display: flex;
+}
+
+.sub {
+    display: flex;
+}
+
+.add:hover {
+    color: white;
+}
+
+.output-total-occurences {
+    margin-left: 3px;
+    margin-right: 2px;
+}
+
+.sub:hover {
+    color: white;
 }
 
 #output-container {

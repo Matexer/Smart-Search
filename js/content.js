@@ -1,5 +1,3 @@
-//REF: https://jsfiddle.net/julmot/973gdh8g/
-
 $(function() {
     var instance;
     var occurences;
