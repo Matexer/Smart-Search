@@ -22,9 +22,10 @@ $(function() {
         let element = "tmp-mark";
 
         func = function(num) {
-            let count;
-            count = getTextContent().split(text).length - 1;
-            occurences = Math.min(num, count);
+            //let count;
+            //count = getTextContent().split(text).length - 1;
+            //occurences = Math.min(num, count);
+            occurences = num;
         };
         
         _mark(text, element, func);
