@@ -4,6 +4,14 @@
   "version": "1.0",
   "manifest_version": 3,
 
+  "cross_origin_embedder_policy": {
+    "value": "require-corp"
+  },
+
+  "cross_origin_opener_policy": {
+    "value": "cross-origin"
+  },
+
   "permissions": [
     "activeTab", "scripting", "tabs", "storage"
   ],
@@ -17,7 +25,14 @@
   },
 
   "content_security_policy": {
-    "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval'"
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval'",
+    "cross_origin_embedder_policy": {
+      "value": "require-corp"
+    },
+  
+    "cross_origin_opener_policy": {
+      "value": "cross-origin"
+    }
   },
 
   "content_scripts": [

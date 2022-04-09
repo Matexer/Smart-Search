@@ -98,6 +98,7 @@ export class SearchEngine {
         engine.setPurifyRange(this.#config.purifyRange);
         engine.setFixRange(this.#config.fixRange);
 
+        engine.setMaxNumOfThreads(2);
         engine.setMultiThreading(false);
         // engine.setMultiThreadingMinComplexity(this.multiThreadingMinComplexity);
         // engine.setMaxNumOfThreads(this.setMaxNumOfThreads);

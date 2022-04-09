@@ -34,6 +34,7 @@ class Logic {
         this._activateListeners();
         this._bindButtons();
         this._loadData();
+        console.log(self.crossOriginIsolated);
     }
 
     _bindButtons() {
