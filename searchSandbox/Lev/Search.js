@@ -14,7 +14,7 @@ export class Search {
         window.addEventListener("message", event => this._handleMessageEvent(event.data), false);
     }
 
-    _handleMessageEvent(eventData) {
+    async _handleMessageEvent(eventData) {
         let msg = this.#messenger.handleMessage(eventData);
         if (!msg) return;
 
@@ -22,6 +22,8 @@ export class Search {
             this.#engine.setConfig(msg.config);
         }
 
-        this.#messenger.sendSearchOutput(this.#engine.lookFor(msg.searchData));
+        var output = await this.#engine.lookFor(msg.searchData);
+
+        this.#messenger.sendSearchOutput(output);
     }
 }

@@ -11,7 +11,22 @@ export class SearchEngine {
         // maxNumOfThreads = 12;
         }
 
-    lookFor(searchData) {
+    async lookFor(searchData) {
+        return new Promise((resolve, reject) => {
+            try {
+                resolve(this._lookFor(searchData));
+            }    
+            catch (e) {
+                reject(e);
+            }
+        });
+    }
+
+    setConfig(config) {
+        this.#config = config;
+    }
+
+    _lookFor(searchData) {
         let pattern = searchData.pattern;
         let text = searchData.text;
         let maxDistance = searchData.maxDistance;
@@ -49,10 +64,6 @@ export class SearchEngine {
                           stats: statsData};
 
         return outputData;
-    }
-
-    setConfig(config) {
-        this.#config = config;
     }
 
     _getSizeTVal(pattern) {
