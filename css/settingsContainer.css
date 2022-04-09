@@ -9,16 +9,32 @@
 }
 
 .setting {
+    display: flex;
     margin-top: 15px;
     margin-left: 10px;
 }
 
 .setting-label {
-    text-align: center;
     margin-right: 10px;
 }
 
 .setting-value {
-    width: 3em;
+    width: 2.5em;
     height: 1.5em;
+    text-align: center;
+    padding: 0.2em;
+}
+
+.language-select {
+    width: 3.5em;
+    height: 1.5em;
+    padding: 0px;
+    padding-left: 3px;
+}
+
+.utf-select {
+    width: 3.5em;
+    height: 1.5em;
+    padding: 0px;
+    padding-left: 3px;
 }

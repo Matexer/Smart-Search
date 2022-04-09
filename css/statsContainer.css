@@ -7,9 +7,22 @@
     content: " ms";
 }
 
+#last-search-stats-container {
+    margin-top: 7px;
+}
+
 .stats-value-badge {
-    font-size: 0.85em;
+    font-size: 0.9em;
     padding: 3px;
     background-color: yellowgreen;
     color: black;
+}
+
+.stat {
+    margin-top: 6px;
+}
+
+.stat-label {
+    margin-right: 0.5em;
+    margin-top: 10px;
 }

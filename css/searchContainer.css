@@ -8,9 +8,17 @@
 }
 
 .output-badge {
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
+    padding-left: 4px;
+    padding-right: 4px;
     color: black; 
     background-color: orange;
+}
+
+.output-val {
+    margin-left: 5px;
 }
 
 .output-occurence {
@@ -62,4 +70,10 @@
 
 #search-btn {
     margin-left: 1px;
+}
+
+#filter-value {
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
 }

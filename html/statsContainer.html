@@ -1,44 +1,61 @@
-<div id="stats-container" class="rounded noselect" style="display: none">
+<div id="stats-container" class="noselect" style="display: none">
 
     <div id="last-search-stats-container" class="container border-bottom">
-        <span class="lang-for-last-search">For last search</span><br>
+        <span class="lang-for-last-search">For last search</span>
 
-        <span id="stats-pattern" class="list-group-item text-truncate search-output rounded">
+        <span id="stats-pattern" class="list-group-item text-truncate"
+        style="padding: 2px; padding-left: 5px">
         </span>
 
-        <span class="lang-pattern-length">Pattern length: </span>
-        <span id="stats-pattern-length" class="badge stats-value-badge"></span><br>
+        <div class="stat">
+            <span class="stat-label lang-pattern-length">Pattern length</span>
+            <span id="stats-pattern-length" class="badge badge-pill stats-value-badge"></span>
+        </div>
 
-        <span class="lang-text-length">Text length: </span>
-        <span id="stats-text-length" class="badge stats-value-badge"></span><br>
+        <div class="stat">
+            <span class="stat-label lang-text-length">Text length</span>
+            <span id="stats-text-length" class="badge badge-pill stats-value-badge"></span>
+        </div>
 
-        <span class="lang-max-distance">Max distance: </span>
-        <span id="stats-max-distance" class="badge stats-value-badge"></span><br>
+        <div class="stat">
+            <span class="stat-label lang-max-distance">Max distance</span>
+            <span id="stats-max-distance" class="badge badge-pill stats-value-badge"></span>
+        </div>
 
-        <span class="lang-search-time">Search time: </span>
-        <span id="stats-search-time" class="badge stats-value-badge"></span><br>
+        <div class="stat">
+            <span class="stat-label lang-search-time">Search time</span>
+            <span id="stats-search-time" class="badge badge-pill stats-value-badge"></span>
+        </div>
 
-        <span class="lang-num-of-outputs">Number of outputs: </span>
-        <span id="stats-numOfOutputs" class="badge stats-value-badge"></span><br>
+        <div class="stat">
+            <span class="stat-label lang-num-of-outputs">Number of outputs</span>
+            <span id="stats-numOfOutputs" class="badge badge-pill stats-value-badge"></span>
+        </div>
 
-        <br>
-
-        <span class="lang-outputs-histogram">Outputs histogram</span>
-        <canvas id="barChart" width="300" height="150"></canvas>
+        <div class="stat" style="width: 365px; border: 1px solid; text-align: center;
+            margin-top: 10px; margin-bottom: 10px;">
+            <span class="lang-outputs-histogram">Outputs histogram</span>
+            <canvas id="barChart" width="300" height="150"></canvas>
+        </div>
     </div>
 
     <div id="all-search-stats-container" class="container border-bottom">
-        <span class="lang-for-all-searchs">For all searchs</span><br>
-        <br>
+        <span class="stat lang-for-all-searchs" style="margin-bottom: 5px">For all searchs</span>
 
-        <span class="lang-searched-patterns">Searched patterns: </span>
-        <span id="stats-numOfPatterns" class="badge stats-value-badge">0</span><br>
+        <div class="stat">
+            <span class="stat-label lang-searched-patterns">Searched patterns</span>
+            <span id="stats-numOfPatterns" class="badge badge-pill stats-value-badge">0</span>
+        </div>
 
-        <span class="lang-founded-outputs">Founded outputs: </span>
-        <span id="stats-totalNumOfOutputs" class="badge stats-value-badge">0</span><br>
+        <div class="stat">
+            <span class="stat-label lang-founded-outputs">Founded outputs</span>
+            <span id="stats-totalNumOfOutputs" class="badge badge-pill stats-value-badge">0</span>
+        </div>
 
-        <span class="lang-analized-signs">Analized signs: </span>
-        <span id="stats-numOfAnalizedSigns" class="badge stats-value-badge">0</span><br>
+        <div class="stat">
+            <span class="stat-label lang-analized-signs">Analized signs</span>
+            <span id="stats-numOfAnalizedSigns" class="badge badge-pill stats-value-badge">0</span>
+        </div>
     </div>
 
     <div style="width: 100%; background-color: darkorange; margin-top: 30px; padding: 5px;" class="text-center">

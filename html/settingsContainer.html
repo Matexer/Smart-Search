@@ -1,57 +1,64 @@
-<div id="settings-container" class="rounded">
+<div id="settings-container">
     <div class="d-flex setting">
         <label class="lang-language setting-label">Extension language: </label>
-        <input id="language" class="form-control setting-value">
+        <select id="language" class="form-select language-select">
+        <option value="pl">pl</option>
+        <option selected value="en">en</option>
+        </select>
     </div>
 
-    <div class="d-flex setting">
+    <div class="setting">
         <label class="lang-cap-letters setting-label">Case sensitive</label>
         <div class="form-check form-switch">
             <input id="capital-letters-chbox" class="form-check-input" type="checkbox">
           </div>
     </div>
 
-    <div class="d-flex setting">
+    <div class="setting">
         <label class="lang-max-num-of-outputs setting-label">Max number of outputs</label>
         <input id="max-num-of-outputs" class="form-control setting-value">
     </div>
 
-    <div class="d-flex setting">
+    <div class="setting">
         <label class="lang-def-max-distance setting-label">Default max distance</label>
-        <input id="def-max-distance" class="form-control setting-value">
-        <label class="setting-label">%</label>
+        <input id="def-max-distance" class="form-control setting-value percent-form">
+        <label class="lang-percent-pattern setting-label">% of pattern</label>
     </div>
 
-    <div class="d-flex setting">
-        <label class="lang-deletion-cost">Deletion cost: </label>
+    <div class="setting">
+        <label class="lang-deletion-cost setting-label">Deletion cost </label>
         <input id="deletion-cost" class="form-control setting-value">
     </div>
 
-    <div class="d-flex setting">
-        <label class="lang-insertion-cost setting-label">Insertion cost: </label>
+    <div class="setting">
+        <label class="lang-insertion-cost setting-label">Insertion cost </label>
         <input id="insertion-cost" class="form-control setting-value">
     </div>
 
-    <div class="d-flex setting">
-        <label class="lang-swap-cost setting-label">Swap cost: </label>
+    <div class="setting">
+        <label class="lang-swap-cost setting-label">Swap cost </label>
         <input id="swap-cost" class="form-control setting-value">
     </div>
 
-    <div class="d-flex setting">
-        <label class="lang-purify-range setting-label">Distance between outputs: </label>
+    <div class="setting">
+        <label class="lang-purify-range setting-label">Distance between outputs </label>
         <input id="purify-range" class="form-control setting-value percent-form">
         <label class="lang-percent-pattern setting-label">% of pattern</label>
     </div>
 
-    <div class="d-flex setting">
-        <label class="lang-fix-range setting-label">Output length fixing: </label>
+    <div class="setting">
+        <label class="lang-fix-range setting-label">Output length fixing </label>
         <input id="fix-range" class="form-control setting-value percent-form">
         <label class="lang-percent-pattern setting-label">% of pattern</label>
     </div>
 
-    <div class="d-flex setting">
-        <label class="lang-utf-encoding setting-label">Encoding: UTF-</label>
-        <input id="utf-encoding" class="form-control setting-value">
+    <div class="setting">
+        <label class="lang-utf-encoding setting-label" style="margin-right: 0px">Encoding: utf-</label>
+        <select id="utf-encoding" class="form-select utf-select">
+            <option value="8">8</option>
+            <option selected value="16">16</option>
+            <option value="8">32</option>
+        </select>
     </div>
 
     <div style="width: 100%; background-color: greenyellow; padding: 5px; margin-top: 15px;" class="text-center">

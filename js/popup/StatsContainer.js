@@ -9,21 +9,21 @@ export class StatsContainer extends Container {
     resetBtnId = "#reset-stats-btn";
     langText;
 
-    showLastSearchStats(data) {
-        $('#stats-pattern').text(data.pattern);
-        $('#stats-pattern-length').text(data.pattern.length);
-        $('#stats-text-length').text(data.textLength);
-        $('#stats-max-distance').text(data.maxDistance);
-        $('#stats-search-time').text(data.searchTime);
-        $('#stats-numOfOutputs').text(data.numOfOutputs);
+    showLastSearchStats(statsData) {
+        $('#stats-pattern').text(statsData.pattern);
+        $('#stats-pattern-length').text(statsData.pattern.length);
+        $('#stats-text-length').text(statsData.textLength);
+        $('#stats-max-distance').text(statsData.maxDistance);
+        $('#stats-search-time').text(statsData.searchTime);
+        $('#stats-numOfOutputs').text(statsData.numOfOutputs);
 
-        this._showOnChart(data.histData);
+        this._showOnChart(statsData.histData);
     }
 
-    showTotalSearchStats(data) {
-        $('#stats-numOfPatterns').text(data.numOfPatterns);
-        $('#stats-totalNumOfOutputs').text(data.numOfOutputs);
-        $('#stats-numOfAnalizedSigns').text(data.analizedSigns);
+    showTotalSearchStats(statsData) {
+        $('#stats-numOfPatterns').text(statsData.numOfPatterns);
+        $('#stats-totalNumOfOutputs').text(statsData.numOfOutputs);
+        $('#stats-numOfAnalizedSigns').text(statsData.analizedSigns);
     }
 
     reloadChartLabels() {
