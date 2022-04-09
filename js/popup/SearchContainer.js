@@ -47,7 +47,7 @@ export class SearchContainer extends Container {
 
     _updateFilterValue() {
         let percent = $("#filter-slider").val();
-        let val = Math.round(percent * this.getPattern().length / 100, 0);
+        let val = Math.round((100 - percent) * this.getPattern().length / 100, 0);
         
         $("#filter-value").val(val);
         $("#filter-percent-value").text(percent);
