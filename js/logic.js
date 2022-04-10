@@ -34,7 +34,6 @@ class Logic {
         this._activateListeners();
         this._bindButtons();
         this._loadData();
-        console.log(self.crossOriginIsolated);
     }
 
     _bindButtons() {
@@ -70,8 +69,12 @@ class Logic {
     }
 
     _initializeSearch() {
-        this.#searchData = this.#popup.getSearchData();
-        this.#messenger.askForTextContent();
+        document.activeElement.blur();
+        $.when(this.#popup.searchCont.showLoading())
+        .done(() => {
+            this.#searchData = this.#popup.getSearchData();
+            this.#messenger.askForTextContent();
+        })
     }
 
     _activateListeners() {
@@ -96,9 +99,12 @@ class Logic {
             this._updateStats(msg.content.stats);
         }
         else if (msg.type == "ClearSearchOutput") {
-            this.#popup.searchCont.showOutput(msg.content);
-            $(this.#popup.searchCont.outputId).click(
-                output => this._higlight(output.currentTarget));
+            $.when(this.#popup.searchCont.hideLoading())
+            .done(() => {
+                this.#popup.searchCont.showOutput(msg.content);
+                $(this.#popup.searchCont.outputId).click(
+                    output => this._higlight(output.currentTarget));
+            })
         }
     }
 

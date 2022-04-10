@@ -7,13 +7,12 @@
   "cross_origin_embedder_policy": {
     "value": "require-corp"
   },
-
   "cross_origin_opener_policy": {
     "value": "cross-origin"
   },
 
   "permissions": [
-    "activeTab", "scripting", "tabs", "storage"
+    "activeTab", "scripting", "storage"
   ],
 
   "commands": {
@@ -29,7 +28,6 @@
     "cross_origin_embedder_policy": {
       "value": "require-corp"
     },
-  
     "cross_origin_opener_policy": {
       "value": "cross-origin"
     }
