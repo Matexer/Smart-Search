@@ -38,6 +38,8 @@ export class SearchEngine {
         const t0 = performance.now();
         let output = engine.lookFor(pattern, text, maxDistance);
 
+        console.log(output);
+
         let outputArray = [];
         let statsData = this._parseStatsData(output);
     
@@ -98,7 +100,7 @@ export class SearchEngine {
         engine.setPurifyRange(this.#config.purifyRange);
         engine.setFixRange(this.#config.fixRange);
 
-        engine.setMaxNumOfThreads(2);
+        engine.setMaxNumOfThreads(window.navigator.hardwareConcurrency);
         engine.setMultiThreading(false);
         // engine.setMultiThreadingMinComplexity(this.multiThreadingMinComplexity);
         // engine.setMaxNumOfThreads(this.setMaxNumOfThreads);
