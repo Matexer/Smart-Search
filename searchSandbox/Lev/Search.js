@@ -22,6 +22,7 @@ export class Search {
             this.#engine.setConfig(msg.config);
         }
 
+        console.log("egg");
         var output = await this.#engine.lookFor(msg.searchData);
 
         this.#messenger.sendSearchOutput(output);

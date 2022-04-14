@@ -30,12 +30,12 @@ export class SearchContainer extends Container {
     showLoading() {
         this._outputCont.hide();
         $("#loading").show();
-        //$("#search-btn").attr('disabled', true);
+        $("#search-btn").attr('disabled', true);
     }
 
     hideLoading() {
         $("#loading").hide();
-        //$("#search-btn").attr('disabled', false);
+        $("#search-btn").attr('disabled', false);
     }
 
     getPattern() {

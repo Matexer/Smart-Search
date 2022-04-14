@@ -22,9 +22,6 @@ $(function() {
         let element = "tmp-mark";
 
         func = function(num) {
-            //let count;
-            //count = getTextContent().split(text).length - 1;
-            //occurences = Math.min(num, count);
             occurences = num;
         };
         
@@ -53,6 +50,8 @@ $(function() {
             "separateWordSearch": false,
             "caseSensitive": true,
             "diacritics": false,
+            "iframes": true,
+            "iframesTimeout": 1000,
             "ignoreJoiners": true,
             "acrossElements": true,
             done: func
@@ -84,7 +83,7 @@ $(function() {
         else if (message.type == "HiglightText") {
             let cont = message.content;
             mark(cont.text, cont.index);
-        }
+        }   
         else if (message.type == "SetOccurences") {
             chrome.runtime.sendMessage({
                 type: "ClearSearchOutput",

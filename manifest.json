@@ -1,14 +1,15 @@
 {
   "name": "Smart Search",
-  "description": "The extension provides an optimized text searching based on a Wagner-Fisher algorithm.",
+  "description": "Better than Ctr+F. It finds also the most similar match.",
   "version": "1.0",
   "manifest_version": 3,
 
   "cross_origin_embedder_policy": {
     "value": "require-corp"
   },
+  
   "cross_origin_opener_policy": {
-    "value": "cross-origin"
+    "value": "same-origin"
   },
 
   "permissions": [
@@ -23,21 +24,11 @@
     }
   },
 
-  "content_security_policy": {
-    "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval'",
-    "cross_origin_embedder_policy": {
-      "value": "require-corp"
-    },
-    "cross_origin_opener_policy": {
-      "value": "cross-origin"
-    }
-  },
-
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["lib/mark.js/mark.es6.min.js",
-             "lib/jquery-3.6.0/jquery-3.6.0.min.js",
+      "js": ["lib/jquery-3.6.0/jquery-3.6.0.min.js",
+             "lib/mark.js/mark.es6.min.js",
              "js/content.js"],
       "css": ["css/mark.css"]
     }
@@ -45,6 +36,10 @@
 
   "action": {
     "default_popup": "popup.html"
+  },
+
+  "content_security_policy": {
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval';"
   },
 
   "sandbox": {
