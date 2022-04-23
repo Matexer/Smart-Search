@@ -101,9 +101,9 @@ export class SearchEngine {
         engine.setFixRange(this.#config.fixRange);
 
         engine.setMaxNumOfThreads(window.navigator.hardwareConcurrency);
-        engine.setMultiThreading(true);
-        // engine.setMultiThreadingMinComplexity(this.multiThreadingMinComplexity);
-        // engine.setMaxNumOfThreads(this.setMaxNumOfThreads);
+        engine.setMultiThreading(false);
+        engine.setMultiThreadingMinComplexity(1);
+        engine.setMaxNumOfThreads(16);
     }
 
     _parseStatsData(outputVec) {
