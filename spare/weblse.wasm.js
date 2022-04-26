@@ -9,7 +9,7 @@ var Module=typeof Module!="undefined"?Module:{};var moduleOverrides=Object.assig
 
     blobUrl = url.createObjectURL(blob);
 
-PThread.unusedWorkers.push(new Worker(blobUrl))
+PThread.unusedWorkers.push(new Worker(blobUrl));
 
 }
 
