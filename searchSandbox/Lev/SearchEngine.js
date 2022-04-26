@@ -38,8 +38,6 @@ export class SearchEngine {
         const t0 = performance.now();
         let output = engine.lookFor(pattern, text, maxDistance);
 
-        console.log(output);
-
         let outputArray = [];
         let statsData = this._parseStatsData(output);
     
