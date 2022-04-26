@@ -11,6 +11,7 @@ class Logic {
     #searchData = {};
 
     #settings = {};
+
     #defaultSettings = {
         language: 'en',
         capitalLetters: true,
@@ -21,7 +22,8 @@ class Logic {
         swapCost: 1,
         purifyRange: 100,
         fixRange: 30,
-        utfEncoding: 16
+        utfEncoding: 16,
+        multithreading: true
     }
 
     constructor() {
@@ -121,9 +123,7 @@ class Logic {
             fixRange: fixRange,
             encoding: this.#settings.utfEncoding,
             maxNumOfOutputs: parseInt(this.#settings.maxNumOfOutputs),
-            // muliThreading = false;
-            // multiThreadingMinComplexity = 100;
-            // maxNumOfThreads = 12;
+            multithreading: this.#settings.multithreading
         }
 
         var searchData = this.#searchData;

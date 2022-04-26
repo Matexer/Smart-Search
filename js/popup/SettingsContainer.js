@@ -19,7 +19,8 @@ export class SettingsContainer extends Container {
         swapCost: $('#swap-cost').val(),
         purifyRange: $('#purify-range').val(),
         fixRange: $('#fix-range').val(),
-        utfEncoding: $('#utf-encoding').val()
+        utfEncoding: $('#utf-encoding').val(),
+        multithreading: $('#multithreading-chbox').prop('checked')
         }
     }
 
@@ -33,6 +34,7 @@ export class SettingsContainer extends Container {
         $('#swap-cost').val(settings.swapCost),
         $('#purify-range').val(settings.purifyRange),
         $('#fix-range').val(settings.fixRange),
-        $('#utf-encoding').val(settings.utfEncoding)
+        $('#utf-encoding').val(settings.utfEncoding),
+        $('#multithreading-chbox').prop('checked', settings.multithreading)
     }
 }

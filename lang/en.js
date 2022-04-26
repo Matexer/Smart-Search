@@ -12,6 +12,7 @@ export var lang = {
     "lang-percent-pattern": "% of a pattern",
     "lang-fix-range": "Output length fixing",
     "lang-utf-encoding": "Encoding: utf-",
+    "lang-multithreading": "Multithreading",
     "lang-reset-settings-btn": "Restore default",
     "lang-save-settings-btn": "Save",
 

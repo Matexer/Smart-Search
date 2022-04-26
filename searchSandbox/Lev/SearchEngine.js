@@ -6,10 +6,8 @@ export class SearchEngine {
         fixRange: 2,
         encoding: 16,
         maxNumOfOutputs: 10,
-        // muliThreading = false;
-        // multiThreadingMinComplexity = 100;
-        // maxNumOfThreads = 12;
-        }
+        multithreading: true
+    }
 
     async lookFor(searchData) {
         return new Promise((resolve, reject) => {
@@ -99,9 +97,8 @@ export class SearchEngine {
         engine.setFixRange(this.#config.fixRange);
 
         engine.setMaxNumOfThreads(window.navigator.hardwareConcurrency);
-        engine.setMultiThreading(true);
-        engine.setMultiThreadingMinComplexity(1);
-        engine.setMaxNumOfThreads(16);
+        engine.setMultiThreading(this.#config.multithreading);
+        engine.setMultiThreadingMinComplexity(1000);
     }
 
     _parseStatsData(outputVec) {

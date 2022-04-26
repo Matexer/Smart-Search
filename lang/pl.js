@@ -12,6 +12,7 @@ export var lang = {
     "lang-percent-pattern": "% wzorca",
     "lang-fix-range": "Zmiana długości dopasowania",
     "lang-utf-encoding": "Kodowanie znaków: utf-",
+    "lang-multithreading": "Wyszukiwanie wielowątkowe",
     "lang-reset-settings-btn": "Przywróć domyślne",
     "lang-save-settings-btn": "Zapisz",
 
