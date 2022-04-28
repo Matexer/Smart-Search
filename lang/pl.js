@@ -4,7 +4,7 @@ export var lang = {
     "lang-language": "Preferencje językowe",
     "lang-cap-letters": "Uwzględniaj wielkość liter",
     "lang-max-num-of-outputs": "Maksymalna liczba wyników na liście",
-    "lang-def-max-distance": "Domyślna odległość",
+    "lang-def-max-distance": "Domyślna maks. odległość",
     "lang-deletion-cost": "Koszt usunięcia znaku",
     "lang-insertion-cost": "Koszt wstawienia znaku",
     "lang-swap-cost": "Koszt zamiany znaku",

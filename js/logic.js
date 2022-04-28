@@ -226,6 +226,7 @@ class Logic {
         this.#settings = this.#defaultSettings;
         this.#memory.saveSync(data);
         this.#popup.settingsCont.insertSettings(this.#defaultSettings);
+        this.#popup.settingsCont.unmarkAll();
         await this.#popup.loadLanguage(this.#settings.language);
         this.#popup.statsCont.reloadChartLabels();
     }

@@ -62,6 +62,14 @@ export class SettingsContainer extends Container {
         $('#multithreading-chbox').prop('checked', settings.multithreading);
     }
 
+    unmarkAll() {
+        for(let settingID in this._settingsId) {
+            let id = this._settingsId[settingID];
+            $(id).removeClass("improper");
+        }
+        $("#save-settings-btn").attr('disabled', false);
+    }
+
     _activateListeners() {
         for(let settingID in this._settingsId) {
             let id = this._settingsId[settingID];
