@@ -71,12 +71,11 @@ class Logic {
     }
 
     _initializeSearch() {
-        document.activeElement.blur();
-        $.when(this.#popup.searchCont.showLoading())
-        .done(() => {
-            this.#searchData = this.#popup.getSearchData();
+        this.#searchData = this.#popup.getSearchData();
+        if (!this.#searchData.pattern == "") {
+            this.#popup.searchCont.showLoading();
             this.#messenger.askForTextContent();
-        })
+        }
     }
 
     _activateListeners() {

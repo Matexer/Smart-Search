@@ -56,7 +56,7 @@
 }
 
 #slider-container {
-    width: 90%;
+    width: 85%;
 }
 
 #filter-slider {
@@ -74,6 +74,7 @@
 
 #filter-value {
     text-align: center;
+    width: 3em;
     padding-left: 0px;
     padding-right: 0px;
 }

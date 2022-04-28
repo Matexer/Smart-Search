@@ -54,6 +54,7 @@ export class SearchContainer extends Container {
     _activateListeners() {
         $("#filter-slider").on("input", () => this._updateFilterValue());
         $("#pattern").on("input", () => this._updateFilterValue());
+        $("#filter-value").on("input", () => this._validateFilterValue());
     }
 
     _updateFilterValue() {
@@ -62,6 +63,19 @@ export class SearchContainer extends Container {
         
         $("#filter-value").val(val);
         $("#filter-percent-value").text(percent);
+
+        this._validateFilterValue();
+    }
+
+    _validateFilterValue() {
+        if (!document.getElementById("filter-value").checkValidity()) {
+            $("#filter-value").addClass("improper");
+            $("#search-btn").attr('disabled' , true);
+        }
+        else {
+            $("#filter-value").removeClass("improper");
+            $("#search-btn").attr('disabled' , false);
+        }
     }
 
 }
