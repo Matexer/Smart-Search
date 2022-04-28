@@ -8,6 +8,10 @@
     margin-right: 60px;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
 .setting {
     display: flex;
     margin-top: 15px;
@@ -19,10 +23,14 @@
 }
 
 .setting-value {
-    width: 2.5em;
+    width: 3em;
     height: 1.5em;
     text-align: center;
-    padding: 0.2em;
+    padding: 0.1em;
+}
+
+.improper {
+    background-color: red!important;
 }
 
 .language-select {
@@ -37,4 +45,5 @@
     height: 1.5em;
     padding: 0px;
     padding-left: 3px;
+    padding-right: 0px;
 }

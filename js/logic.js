@@ -212,6 +212,9 @@ class Logic {
 
     async _updateSettings() {
         let settings = this.#popup.settingsCont.getSettings();
+
+        if (settings == null) {return;}
+
         this.#settings = settings;
         let data = {settings: settings};
         this.#memory.saveSync(data);
