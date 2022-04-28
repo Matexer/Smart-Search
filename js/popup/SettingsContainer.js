@@ -8,7 +8,7 @@ export class SettingsContainer extends Container {
     saveBtnId = "#save-settings-btn";
     resetSettingsBtnId = "#reset-settings-btn";
 
-    settingsId = {
+    _settingsId = {
         language: '#language',
         maxNumOfOutputs: '#max-num-of-outputs',
         defaultMaxDistance: '#def-max-distance',
@@ -20,32 +20,32 @@ export class SettingsContainer extends Container {
         utfEncoding: '#utf-encoding',
     };
 
-    chboxesId = {
+    _chboxesId = {
         capitalLetters: '#capital-letters-chbox',
         multithreading: '#multithreading-chbox'
     };
 
-    getSettings() {
-        if (this._areSettingsProper()) {
-            let settings =  {
-                language: $('#language').val(),
-                capitalLetters: $('#capital-letters-chbox').prop('checked'),
-                maxNumOfOutputs: $('#max-num-of-outputs').val(),
-                defaultMaxDistance: $('#def-max-distance').val(),
-                deletionCost: $('#deletion-cost').val(),
-                insertionCost: $('#insertion-cost').val(),
-                swapCost: $('#swap-cost').val(),
-                purifyRange: $('#purify-range').val(),
-                fixRange: $('#fix-range').val(),
-                utfEncoding: $('#utf-encoding').val(),
-                multithreading: $('#multithreading-chbox').prop('checked')
-            };
+    _invalid = new Set();
 
-            return settings;
-        }
-        else {
-            return null;
-        }
+    async render(rootID) {
+        return await super.render(rootID)
+            .then(() => this._activateListeners());
+    }
+
+    getSettings() {
+        return {
+            language: $('#language').val(),
+            capitalLetters: $('#capital-letters-chbox').prop('checked'),
+            maxNumOfOutputs: $('#max-num-of-outputs').val(),
+            defaultMaxDistance: $('#def-max-distance').val(),
+            deletionCost: $('#deletion-cost').val(),
+            insertionCost: $('#insertion-cost').val(),
+            swapCost: $('#swap-cost').val(),
+            purifyRange: $('#purify-range').val(),
+            fixRange: $('#fix-range').val(),
+            utfEncoding: $('#utf-encoding').val(),
+            multithreading: $('#multithreading-chbox').prop('checked')
+        };
     }
 
     insertSettings(settings) {
@@ -62,32 +62,29 @@ export class SettingsContainer extends Container {
         $('#multithreading-chbox').prop('checked', settings.multithreading);
     }
 
-    _areSettingsProper() {
-        let areProper = true;
-        for(let settingID in this.settingsId) {
-            let id = this.settingsId[settingID];
-            id = id.substring(1);
-            if (!document.getElementById(id).checkValidity()) {
-                this._markImproper("#" + id);
-                areProper = false;
-            }
+    _activateListeners() {
+        for(let settingID in this._settingsId) {
+            let id = this._settingsId[settingID];
+            $(id).on("input", (event) => this._validate(event.currentTarget.id));
         }
-
-        if (areProper) {
-            this._unmarkAll();
-        }
-
-        return areProper;
     }
 
-    _markImproper(settingID) {
-        $(settingID).addClass("improper");
+    _validate(id) {
+        if (!document.getElementById(id).checkValidity()) {
+            $("#" + id).addClass("improper");
+            this._invalid.add(id);
+        }
+        else {
+            $("#" + id).removeClass("improper");
+            this._invalid.delete(id);
+        }
+
+        if (this._invalid.size > 0) {
+            $("#save-settings-btn").attr('disabled', true);
+        }
+        else {
+            $("#save-settings-btn").attr('disabled', false);
+        }
     }
 
-    _unmarkAll() {
-        for(let settingID in this.settingsId) {
-                let id = this.settingsId[settingID];
-                $(id).removeClass("improper");
-            }
-        }
 }
