@@ -27,6 +27,9 @@ input[type=number]::-webkit-inner-spin-button {
     height: 1.5em;
     text-align: center;
     padding: 0.1em;
+    padding-right: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
 .improper {
