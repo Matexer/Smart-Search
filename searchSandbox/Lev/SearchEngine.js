@@ -125,7 +125,7 @@ export class SearchEngine {
             for (let j = i + 1; j < outputArray.length; j++) {
                 const ele2 = outputArray[j];
                 let word2 = text.substr(ele2.index, ele2.length);
-                if (word1 == word2) {
+                if (word1.trim() == word2.trim()) {
                     outputArray.splice(j, 1);
                     j--;
                 }
