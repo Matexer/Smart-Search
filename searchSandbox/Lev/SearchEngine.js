@@ -25,9 +25,18 @@ export class SearchEngine {
     }
 
     _lookFor(searchData) {
-        let pattern = searchData.pattern;
-        let text = searchData.text;
+        let pattern = null;
+        let text = null;
         let maxDistance = searchData.maxDistance;
+
+        if (this.#config.capitalLetters) {
+            pattern = searchData.pattern;
+            text = searchData.text;
+        }
+        else {
+            pattern = searchData.pattern.toLowerCase();
+            text = searchData.text.toLowerCase();
+        }
 
         var sizeTVal = this._getSizeTVal(pattern);
         var engine = this._getEngine(sizeTVal);
@@ -50,7 +59,7 @@ export class SearchEngine {
     
         output.delete();
 
-        this._removeDuplicates(outputArray, text);
+        this._removeDuplicates(outputArray, searchData.text);
 
         let maxVals = Math.min(this.#config.maxNumOfOutputs, outputSize);
         outputArray.splice(maxVals);

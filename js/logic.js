@@ -130,16 +130,11 @@ class Logic {
             fixRange: fixRange,
             encoding: this.#settings.utfEncoding,
             maxNumOfOutputs: parseInt(this.#settings.maxNumOfOutputs),
-            multithreading: this.#settings.multithreading
+            multithreading: this.#settings.multithreading,
+            capitalLetters: this.#settings.capitalLetters
         }
 
         var searchData = this.#searchData;
-        if (!this.#settings.capitalLetters) {
-            searchData = {pattern: this.#searchData.pattern.toLowerCase(),
-                          text: this.#searchData.text.toLowerCase(),
-                          maxDistance: this.#searchData.maxDistance}
-        }
-
         let data = {searchData: searchData,
                     config: searchConfig};
 
