@@ -8,10 +8,6 @@
     margin-right: 60px;
 }
 
-input[type=number]::-webkit-inner-spin-button {
-    opacity: 1
-}
-
 .setting {
     display: flex;
     margin-top: 15px;
@@ -41,6 +37,7 @@ input[type=number]::-webkit-inner-spin-button {
     height: 1.5em;
     padding: 0px;
     padding-left: 3px;
+    cursor: pointer;
 }
 
 .utf-select {
@@ -49,4 +46,5 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 0px;
     padding-left: 3px;
     padding-right: 0px;
+    cursor: pointer;
 }

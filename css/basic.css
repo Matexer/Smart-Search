@@ -20,6 +20,11 @@
     margin-right: 5px;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    cursor: pointer;
+}
+
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */

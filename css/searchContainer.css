@@ -48,6 +48,10 @@
     color: white;
 }
 
+#filter-value::-webkit-inner-spin-button {
+    height: 34.5px;
+}
+
 #output-container {
     overflow-y: auto;
     height: fit-content;
