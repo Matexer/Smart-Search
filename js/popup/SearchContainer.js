@@ -8,6 +8,7 @@ export class SearchContainer extends Container {
     _outputCont = new OutputContainer();
 
     searchBtnId = "#search-btn";
+    patternId = "#pattern";
     outputId = this._outputCont.outputId;
     outputValId = this._outputCont.outputValId;
     outputOccurenceId = this._outputCont.outputOccurenceId;
@@ -49,6 +50,10 @@ export class SearchContainer extends Container {
     setFilterPercentValue(value) {
         $("#filter-slider").val(value);
         $("#filter-percent-value").text(value);
+    }
+
+    isDistanceValid() {
+        return document.getElementById("filter-value").checkValidity();
     }
 
     _activateListeners() {

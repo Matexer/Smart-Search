@@ -36,13 +36,24 @@ class Logic {
         this._activateListeners();
         this._bindButtons();
         this._loadData();
+
+        $(this.#popup.searchCont.patternId).focus();
     }
 
     _bindButtons() {
         $(this.#popup.searchCont.searchBtnId).click(() => this._initializeSearch());
         $(this.#popup.statsCont.resetBtnId).click(() => this._resetStats());
         $(this.#popup.settingsCont.saveBtnId).click(() => this._updateSettings());
-        $(this.#popup.settingsCont.resetSettingsBtnId).click(() => this._resetSettings());       
+        $(this.#popup.settingsCont.resetSettingsBtnId).click(() => this._resetSettings());
+        $(this.#popup.searchCont.patternId).keypress(
+            (event) => this._handleKeyPressOnPattern(event.originalEvent.key))
+    }
+
+    _handleKeyPressOnPattern(key) {
+        if (!(key == "Enter")) {return;}
+        if (!this.#popup.searchCont.isDistanceValid()) {return;}
+
+        this._initializeSearch();
     }
 
     async _loadData() {
