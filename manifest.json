@@ -1,8 +1,13 @@
 {
   "name": "Smart Search",
-  "description": "Better than Ctrl+F. It shows also similar matches.",
-  "version": "1.0",
+  "description": "Better than Ctrl+F. It shows also similar matches. Shortkey: Ctrl+Shift+F",
+  "version": "0.1",
   "manifest_version": 3,
+
+  "icons": {"16": "graphic/logo16.png",
+            "48": "graphic/logo48.png",
+            "128": "graphic/logo128.png"
+  },
 
   "cross_origin_embedder_policy": {
     "value": "require-corp"
