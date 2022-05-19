@@ -16,7 +16,7 @@ class Logic {
         language: 'en',
         capitalLetters: true,
         maxNumOfOutputs: 10,
-        defaultMaxDistance: 80,
+        defaultMaxDistance: 60,
         deletionCost: 1,
         insertionCost: 1,
         swapCost: 1,
