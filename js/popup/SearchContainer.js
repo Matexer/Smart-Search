@@ -90,7 +90,7 @@ export class SearchContainer extends Container {
 
     _updateSliderValue() {
         let distance = $("#filter-value").val();
-        let pattern = this.getPattern().length;
+        let pattern = Math.max(this.getPattern().length, 1);
 
         let percent = Math.round((distance / pattern * 100), 0);
 
