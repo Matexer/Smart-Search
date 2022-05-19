@@ -7,7 +7,13 @@
             <button id="search-btn" type="button" class="lang-search-btn btn btn-primary">Search</button>
         </div>
 
-        <span class="lang-max-distance-filtration noselect" style="font-size: small;">Max distance - filtratrion</span>
+        <div style="display: flex; justify-content: space-between;">
+            <span class="lang-max-distance-filtration noselect" style="font-size: small;">Max distance - filtratrion</span>
+            <div style="margin-right: 80px; font-size: small; color: gray;">
+                <span class="lang-pattern-length-short noselect">Pattern length</span>
+                <span id="pattern-length" class="noselect">7</span>
+            </div>
+        </div>
 
         <div id="filter-container" style="display: inline-flex; width: 100%;" class="conatiner">
             <input id="filter-value" value="0" autocomplete="off" class="form-control percent-form"
