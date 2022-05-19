@@ -64,13 +64,14 @@ export class SearchContainer extends Container {
         $("#filter-value").on("input", () => this._updateSliderValue());
 
         $("#pattern").on("input", () => this._updateMaxDistance());
+        $("#pattern").on("input", () => this._updateDisplayedPatternLength());
     }
 
     _updateFilterValue() {
         let percent = $("#filter-slider").val();
         let pattern = this.getPattern().length;
 
-        let val = Math.floor(pattern * (100 - percent) / 100, 0);
+        let val = Math.floor(pattern * (percent) / 100, 0);
         
         $("#filter-value").val(val);
         $("#filter-percent-value").text(percent);
@@ -83,11 +84,15 @@ export class SearchContainer extends Container {
         this._validateFilterValue();
     }
 
+    _updateDisplayedPatternLength() {
+        $("#pattern-length").text(this.getPattern().length);    
+    }
+
     _updateSliderValue() {
         let distance = $("#filter-value").val();
         let pattern = this.getPattern().length;
 
-        let percent = Math.round(100 - (distance / pattern * 100), 0);
+        let percent = Math.round((distance / pattern * 100), 0);
 
         if (percent > 100) {
             percent = 100;
