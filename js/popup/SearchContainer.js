@@ -60,7 +60,10 @@ export class SearchContainer extends Container {
         $("#filter-slider").on("input", () => this._updateFilterValue());
         $("#pattern").on("input", () => this._updateFilterValue());
         $("#filter-value").on("input", () => this._validateFilterValue());
+
         $("#filter-value").on("input", () => this._updateSliderValue());
+
+        $("#pattern").on("input", () => this._updateMaxDistance());
     }
 
     _updateFilterValue() {
@@ -72,6 +75,11 @@ export class SearchContainer extends Container {
         $("#filter-value").val(val);
         $("#filter-percent-value").text(percent);
 
+        this._validateFilterValue();
+    }
+
+    _updateMaxDistance() {
+        $("#filter-value").attr('max', this.getPattern().length);
         this._validateFilterValue();
     }
 
