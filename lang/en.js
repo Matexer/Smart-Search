@@ -1,7 +1,7 @@
 export var lang = {
     text: {
     //Settings
-    "lang-language": "Extension language",
+    "lang-language": "Language",
     "lang-cap-letters": "Case sensitive",
     "lang-max-num-of-outputs": "Max number of outputs",
     "lang-def-max-distance": "Default max distance",
@@ -12,7 +12,7 @@ export var lang = {
     "lang-percent-pattern": "% of a pattern",
     "lang-fix-range": "Output length fixing",
     "lang-utf-encoding": "Encoding: UTF-",
-    "lang-multithreading": "Multithreading",
+    "lang-multithreading": "CPU multithreading",
     "lang-reset-settings-btn": "Restore default",
     "lang-save-settings-btn": "Save",
 

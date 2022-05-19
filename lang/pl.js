@@ -1,7 +1,7 @@
 export var lang = {
     text: {
     //Ustawienia
-    "lang-language": "Preferencje językowe",
+    "lang-language": "Język",
     "lang-cap-letters": "Uwzględniaj wielkość liter",
     "lang-max-num-of-outputs": "Maksymalna liczba wyników na liście",
     "lang-def-max-distance": "Domyślna maks. odległość",
@@ -12,7 +12,7 @@ export var lang = {
     "lang-percent-pattern": "% wzorca",
     "lang-fix-range": "Zmiana długości dopasowania",
     "lang-utf-encoding": "Kodowanie znaków: UTF-",
-    "lang-multithreading": "Wyszukiwanie wielowątkowe",
+    "lang-multithreading": "Wielowątkowość na CPU",
     "lang-reset-settings-btn": "Przywróć domyślne",
     "lang-save-settings-btn": "Zapisz",
 
