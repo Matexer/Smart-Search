@@ -60,16 +60,35 @@ export class SearchContainer extends Container {
         $("#filter-slider").on("input", () => this._updateFilterValue());
         $("#pattern").on("input", () => this._updateFilterValue());
         $("#filter-value").on("input", () => this._validateFilterValue());
+        $("#filter-value").on("input", () => this._updateSliderValue());
     }
 
     _updateFilterValue() {
         let percent = $("#filter-slider").val();
-        let val = Math.round((100 - percent) * this.getPattern().length / 100, 0);
+        let pattern = this.getPattern().length;
+
+        let val = Math.floor(pattern * (100 - percent) / 100, 0);
         
         $("#filter-value").val(val);
         $("#filter-percent-value").text(percent);
 
         this._validateFilterValue();
+    }
+
+    _updateSliderValue() {
+        let distance = $("#filter-value").val();
+        let pattern = this.getPattern().length;
+
+        let percent = Math.round(100 - (distance / pattern * 100), 0);
+
+        if (percent > 100) {
+            percent = 100;
+        }
+        else if (percent < 0) {
+            percent = 0;
+        }
+
+        this.setFilterPercentValue(percent);
     }
 
     _validateFilterValue() {
