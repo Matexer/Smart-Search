@@ -35,7 +35,7 @@ export var lang = {
     //Wyszukiwanie
     "lang-search-btn": "Szukaj",
     "lang-max-distance-filtration": "Maks. odległość",
-    "lang-pattern-length-short": "Dł. wzorca"
+    "lang-pattern-length-short": "|wzorzec|="
     },
 
     placeholder: {

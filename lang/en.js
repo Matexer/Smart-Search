@@ -35,7 +35,7 @@ export var lang = {
     //Search
     "lang-search-btn": "Search",
     "lang-max-distance-filtration": "Max distance",
-    "lang-pattern-length-short": "Pattern len."
+    "lang-pattern-length-short": "|pattern|="
     },
 
     placeholder: {
